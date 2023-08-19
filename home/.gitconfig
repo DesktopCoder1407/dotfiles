@@ -1,0 +1,7 @@
+[user]
+    name = DesktopCoder1407
+    email = 
+[core]
+    editor = nvim
+[init]
+    defaultBranch = master
