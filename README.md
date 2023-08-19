@@ -2,7 +2,7 @@
 [?]
 
 # Installation
-git clone <url> ~/.dotfiles
+git clone https://github.com/DesktopCoder1407/dotfiles.git ~/.dotfiles
 
 # Update
 run <path-to-update-script>
@@ -15,6 +15,7 @@ run <path-to-update-script>
 
 # Fonts
 ttf-fira-code --> Main Font
+
 noto-fonts-emoji --> Emojis
 
 # Apps
@@ -34,9 +35,9 @@ noto-fonts-emoji --> Emojis
 
 # Optional Apps
 `steam`
-`zip` & `unzip`
+`unzip`
 `discord`
-`minecraft-launcher`^aur
+`minecraft-launcher (aur)`
 
 # Installer
 ## Official Repo
