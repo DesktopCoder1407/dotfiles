@@ -14,9 +14,8 @@ run <path-to-update-script>
 [?]
 
 # Fonts
-ttf-fira-code --> Main Font
-
-noto-fonts-emoji --> Emojis
+Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases)  
+Google Emojis : noto-fonts-emoji
 
 # Apps
 | App Type | Chosen App |
@@ -24,10 +23,10 @@ noto-fonts-emoji --> Emojis
 | Shell | `bash` |
 | Display Manager | `ly` |
 | Terminal | `alacritty` |
-| Window Manager | `?` |
+| Window Manager | `i3-wm` |
 | Status Bar | `?` |
 | Text Editor | `neovim` |
-| Browser | `firefox?` |
+| Browser | `falkon` |
 | File Manager | `?` |
 | App Launcher | `?` |
 | Audio | `?` |
