@@ -31,26 +31,3 @@ opt.spelllang = 'en_us'  -- Default spelling language
 opt.splitright = true  -- Vertical splitting always splits to the right
 opt.undofile = true  -- Allow for undo between sessions
 opt.wildmode = 'list:longest'  -- Allow command completion similar to bash
-
--- [[ Status Line ]]
-require('lualine').setup {
-    options = { theme = 'ayu_mirage' }
-}
-
--- [[ Plugin Setups ]]
- -- Telescope
-require('telescope').setup {
-    defaults = {
-        dynamic_preview_title = true,
-        use_less = false
-    }
-}
- -- Nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-require('nvim-tree').setup {
-    view = { width = 32 },
-    filters = { dotfiles = true }
-}
-
-

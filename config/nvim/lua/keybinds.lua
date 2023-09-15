@@ -19,5 +19,4 @@ keymap('n', '<A-S-Right>', '<C-W>L', default_opts)
 
 -- Function key keybinds
 --keymap('', '<F1>', ':help<CR>', default_opts)  -- Set by default
-keymap('', '<S-F1>', ':NvimTreeToggle<CR>', default_opts)
 keymap('', '<F2>', ':set invspell<CR>', default_opts)
