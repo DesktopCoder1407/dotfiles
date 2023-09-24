@@ -2,6 +2,8 @@
     name = DesktopCoder1407
     email = 
 [core]
-    editor = nvim
+    editor = vim
+[diff]
+    tool = meld
 [init]
     defaultBranch = master

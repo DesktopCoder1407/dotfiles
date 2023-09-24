@@ -15,18 +15,17 @@ run <path-to-update-script>
 
 # Fonts
 Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases)  
-Google Emojis : noto-fonts-emoji
 
 # Apps
 | App Type | Chosen App |
 | --- | --- |
+| Bootloader | `systemd-boot` |
 | Shell | `bash` |
 | Display Manager | `ly` |
 | Terminal | `alacritty` |
-| Window Manager | `i3-wm` |
-| Status Bar | `?` |
-| Text Editor | `neovim` |
-| Browser | `falkon` |
+| Window Manager | `i3-wm` or `plasma` |
+| Text Editor | `vim` |
+| Browser | `firefox` |
 | File Manager | `?` |
 | App Launcher | `?` |
 | Audio | `?` |
