@@ -25,21 +25,16 @@ Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases)
 | Terminal | `alacritty` |
 | Window Manager | `i3-wm` or `plasma` |
 | Text Editor | `vim` |
-| Browser | `firefox` |
+| Browser | `falkon` |
 | File Manager | `?` |
-| App Launcher | `?` |
+| App Launcher | `rofi` |
 | Audio | `?` |
-| Media Player | `?` |
 
 # Optional Apps
-`steam`
+`steam` (requires multi-lib)
 `unzip`
 `discord`
-`minecraft-launcher (aur)`
+`elisa`
 
 # Installer
-## Official Repo
 `pacman -Syu ###`
-
-## AUR
-`yay -Syu ###`
