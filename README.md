@@ -24,8 +24,8 @@ Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases)
 | Display Manager | `ly` |
 | Terminal | `alacritty` |
 | Window Manager | `i3-wm` or `plasma` |
-| Text Editor | `vim` |
-| Browser | `falkon` |
+| Text Editor | `neovim` |
+| Browser | `falkon` or 'iridium'(AUR) |
 | File Manager | `?` |
 | App Launcher | `rofi` |
 | Audio | `?` |
