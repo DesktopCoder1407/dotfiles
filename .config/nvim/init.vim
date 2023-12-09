@@ -8,6 +8,7 @@ color habamax
 
 noremap <silent> <F2> <Cmd>set invspell<CR>
 
+" Arrow keys move up/down one visual line when wrapped.
 noremap <Up> g<Up>
 noremap g<Up> <Up>
 noremap <Down> g<Down>
