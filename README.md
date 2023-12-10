@@ -22,6 +22,7 @@ Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases)
 | Bootloader | `systemd-boot` |
 | Shell | `bash` |
 | Display Manager | `ly` |
+| --- | --- |
 | Terminal | `alacritty` |
 | Window Manager | `i3-wm` or `plasma` |
 | Text Editor | `neovim` |
