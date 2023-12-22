@@ -1,83 +1,55 @@
 # Alacritty Configuration
 # By DesktopCoder1407
 
-# Any items in the `env` entry below will be added as
-# environment variables. Some entries may override variables
-# set by alacritty itself.
-env:
-  # TERM variable
-  #
-  # This value is used to set the `$TERM` environment variable for
-  # each instance of Alacritty. If it is not present, alacritty will
-  # check the local terminfo database and use `alacritty` if it is
-  # available, otherwise `xterm-256color` is used.
-  TERM: xterm-256color
-
-window:
-  # Window dimensions (in lines/columns, not pixels)
-  dimensions:
-    columns: 120
-    lines: 30
-
-  # Background opacity from 0.0 to 1.0 (0 is transparent)
-  #opacity: 1.0
-
-  # Window title
-  dynamic_title: true
-
-  # Window class (Linux/BSD only):
-  #class:
-    # Application instance name
-    #instance: Alacritty
-    # General application class
-    #general: Alacritty
+live_config_reload: true
+#env:
+#  TERM: xterm-256color
 
 #scrolling:
-  # Scrolling distance multiplier.
-  #multiplier: 3
+#  multiplier: 3
 
-# Font configuration
 font:
   normal:
-    # Font family
-    family: FiraCode Nerd Font Mono
+    family: FiraCodeNerdFontMono
+    style: Retina
+  bold:
+    family: FiraCodeNerdFontMono
+    style: Bold
 
-    # Font face.
-    style: Light
-
-  # Point size
   size: 11.0
 
-# If `true`, bold text is drawn using the bright color variants.
-#draw_bold_text_with_bright_colors: false
+#colors:
+#  primary:
+#    foreground: ""
+#    background: ""
 
-# Colors (Darkside)
-colors:
-  primary:
-    background: "#000000"
-    foreground: "#BABABA"
-
-  # Normal colors
-  normal:
-    black:    "#000000"
-    red:      "#E8341C"
-    green:    "#68C256"
-    yellow:   "#F2D42C"
-    blue:     "#1C98E8"
-    magenta:  "#8E69C9"
-    cyan:     "#1C98E8"
-    white:    "#BABABA"
-
-  # Bright colors
-  bright:
-    black:    "#444444"
-    red:      "#E05A4F"
-    green:    "#77B869"
-    yellow:   "#EFD64B"
-    blue:     "#387CD3"
-    magenta:  "#957BBE"
-    cyan:     "#3D97E2"
-    white:    "#BABABA"
+## Colors (Darkside)
+#colors:
+#  primary:
+#    background: "#000000"
+#    foreground: "#BABABA"
+#
+#  # Normal colors
+#  normal:
+#    black:    "#000000"
+#    red:      "#E8341C"
+#    green:    "#68C256"
+#    yellow:   "#F2D42C"
+#    blue:     "#1C98E8"
+#    magenta:  "#8E69C9"
+#    cyan:     "#1C98E8"
+#    white:    "#BABABA"
+#
+#  # Bright colors
+#  bright:
+#    black:    "#444444"
+#    red:      "#E05A4F"
+#    green:    "#77B869"
+#    yellow:   "#EFD64B"
+#    blue:     "#387CD3"
+#    magenta:  "#957BBE"
+#    cyan:     "#3D97E2"
+#    white:    "#BABABA"
 
 # Colors (Tomorrow Night)
 #colors:
@@ -284,8 +256,6 @@ cursor:
   # from `0.0` to `1.0`.
   #thickness: 0.15
 
-# Live config reload (changes require restart)
-#live_config_reload: true
 
 mouse:
   hide_when_typing: true
