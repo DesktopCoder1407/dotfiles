@@ -1,5 +1,5 @@
-# Important
-[?]
+# Description
+Contains all setup and config files for basic packages to setup new systems easily.
 
 # Installation
 git clone https://github.com/DesktopCoder1407/dotfiles.git ~/.dotfiles
@@ -8,9 +8,6 @@ git clone https://github.com/DesktopCoder1407/dotfiles.git ~/.dotfiles
 run <path-to-update-script>
 
 # Configuration
-[?]
-
-# xorg Needed Packages
 [?]
 
 # Fonts
@@ -22,20 +19,17 @@ Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases)
 | Bootloader | `systemd-boot` |
 | Shell | `bash` |
 | Display Manager | `ly` |
-| --- | --- |
+| Window Manager | `i3-wm` (tiling) or `xfce4` (windowed) |
 | Terminal | `alacritty` |
-| Window Manager | `i3-wm` or `xfce4` or `lxde` |
-| Text Editor | `neovim` |
-| Browser | `falkon` or 'iridium'(AUR) |
+| Text Editor (TUI) | `neovim` |
+| Browser | `chromium` (blink, gtk) |
+| --- | --- |
 | File Manager | `?` |
 | App Launcher | `rofi` |
 | Audio | `?` |
 
 # Optional Apps
-`steam` (requires multi-lib)
 `unzip`
-`discord`
-`elisa`
 
 # Installer
 `pacman -Syu ###`
