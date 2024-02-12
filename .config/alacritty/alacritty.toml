@@ -3,6 +3,9 @@
 
 live_config_reload = true
 
+[window]
+dimensions = { columns = 100, lines = 30 }
+
 [font]
 normal = { family = "FiraCodeNerdFontMono", style = "Retina" }
 bold = { family = "FiraCodeNerdFontMono", style = "Bold" }
