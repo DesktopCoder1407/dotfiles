@@ -19,14 +19,14 @@ Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases)
 | Bootloader | `systemd-boot` |
 | Shell | `bash` |
 | Display Manager | `ly` |
-| Window Manager | `i3-wm` (tiling) or `xfce4` (windowed) |
+| Window Manager | `xfce4` |
 | Terminal | `alacritty` |
-| Text Editor (TUI) | `neovim` |
+| Text Editor (TUI) | `vim` |
 | Browser | `chromium` (blink, gtk) |
 | --- | --- |
 | File Manager | `?` |
-| App Launcher | `rofi` |
-| Audio | `?` |
+| App Launcher | `?` |
+| Audio | `pipewire` |
 
 # Optional Apps
 `unzip`

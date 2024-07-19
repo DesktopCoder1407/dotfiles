@@ -1,24 +1,48 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Setup extended bash completion
+# Hooks
 [[ -f /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
+[[ -f /usr/share/doc/pkgfile/command-not-found.bash ]] && source /usr/share/doc/pkgfile/command-not-found.bash
 
+# Aliases
 alias ls='ls --color=auto'
-alias ll='ls -lA --color=auto'
+alias ll='ls -lhA --color=auto'
 alias grep='grep --color=auto'
 
-PS1='\e[1;33m\w\e[0m\$ '
+# Shell Options
+shopt -s checkwinsize
 
-# History, remove all but the last identical command and commands that start with a space
+# Shell Prompt Customization
+BYELLOW='\[\033[01;33m\]'
+PS_CLEAR='\[\033[0m\]'
+export PS1="${BYELLOW}\u:\w${PS_CLEAR}$ "
+
+# Environment Variables
 export HISTCONTROL="erasedups:ignorespace"
 
 # Simple self-made scripts.
-package_size() {
-    for i in "$@"; do
-        local human_size=$(pacman -Si $i | grep "Installed Size" | grep -o "[0-9]\+\.\?[0-9]* .*" | sed "s; ;;g")
-        echo $i is $(numfmt --from=iec-i --to=iec ${human_size:0:-1})B
+package-size() {
+    [[ $# -gt 1 ]] && pacman -Qi $2 | awk 'BEGIN { FS=OFS=": " } /Size/ { gsub(/ +|B/, "", $2); print $2 }' | numfmt --from=iec-i && return
+    pacman -Qi $1 | awk 'BEGIN { FS=OFS=": " } /Size/ { gsub(/ +|B/, "", $2); print $2 }' | numfmt --from=iec-i --to=iec
+}
+
+package-dependencies() {
+    pacman -Qi $1 | awk '/Depends On/ { gsub(/ +/, " "); print }' | cut -d\  -f4-
+}
+
+package-size-recursive() {
+    echo "$1 :: $(package-size $1)"
+
+    local sum=$(package-size-byte -b $1)
+    local num=0
+    for i in $(package-dependencies $1); do
+        echo "$i :: $(package-size-byte $i)"
+        let sum+=$(package-size-byte -b $i)
+        let num+=1
     done
+
+    echo "Package \"$1\", contains $num dependencies and is $(numfmt --to=iec $sum)B large in total."
 }
 
 package-group-info() {
@@ -37,6 +61,13 @@ package-group-size() {
     echo "Group \"$1\" contains ${#sizearray[@]} packages and is $(numfmt --to=iec $sum)B"
 }
 
+package-compare() {
+    local pkg1=$1
+    local pkg2=$2
+
+    pacman -Qi ${pkg1} | awk 'BEGIN { FS=OFS=": " } /Size/ { print $2 }'
+}
+
 aurman() {
     # Input is the git-clone URL of the package.
     pkg_name=$(echo $1 | sed "s;https\?://aur\.archlinux\.org/\(.*\)\.git;\1;;")
@@ -53,6 +84,13 @@ aurman() {
     echo "To install, run pacman -U '*.tar.zst'"
 }
 
-# Cool system specs start page
-echo -e "\n"
-neofetch
+bitwarden_username() {
+    # Input is the account to get the username for
+    rbw list --fields=name,user | grep -i $1
+}
+
+bitwarden_password() {
+    # Input is the account to get the password for
+    bitwarden_username $1
+    rbw get $1 | xclip
+}
