@@ -1,11 +1,10 @@
-# Description
-Contains all setup and config files for basic packages to setup new systems easily.
-
 # Installation
-git clone https://github.com/DesktopCoder1407/dotfiles.git ~/.dotfiles
+ - `git clone --recursive https://github.com/DesktopCoder1407/dotfiles.git ~/.dotfiles`
+ - `cd ~/.dotfiles`
+ - [Run install script]
 
 # Update
-run <path-to-update-script>
+ - To update, simply run `<path-to-update-script>`
 
 # Configuration
 [?]

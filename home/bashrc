@@ -1,25 +1,23 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Hooks
-[[ -f /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
-[[ -f /usr/share/doc/pkgfile/command-not-found.bash ]] && source /usr/share/doc/pkgfile/command-not-found.bash
-
-# Aliases
-alias ls='ls --color=auto'
-alias ll='ls -lhA --color=auto'
-alias grep='grep --color=auto'
-
-# Shell Options
-shopt -s checkwinsize
+# Environment Variables
+export HISTCONTROL="erasedups:ignorespace"
 
 # Shell Prompt Customization
 BYELLOW='\[\033[01;33m\]'
 PS_CLEAR='\[\033[0m\]'
 export PS1="${BYELLOW}\u:\w${PS_CLEAR}$ "
 
-# Environment Variables
-export HISTCONTROL="erasedups:ignorespace"
+# Hooks
+[[ -f /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
+
+# Aliases
+alias ls='ls --color=auto'
+alias ll='ls -lhA --color=auto'
+alias grep='grep --color=auto'
+
+shopt -s checkwinsize  # Let bash know when the terminal has been resized.
 
 # Simple self-made scripts.
 package-size() {
@@ -93,4 +91,8 @@ bitwarden_password() {
     # Input is the account to get the password for
     bitwarden_username $1
     rbw get $1 | xclip
+}
+
+download_music() {
+    yt-dlp -x --audio-format flac $1
 }

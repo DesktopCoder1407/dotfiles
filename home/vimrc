@@ -1,14 +1,14 @@
 " Plugins
 set nocompatible
 filetype off
-"set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 
-"call vundle#begin()
+call vundle#begin()
 
-"Plugin 'VundleVim/Vundle.vim'
-"Plugin 'ycm-core/YouCompleteMe'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'ycm-core/YouCompleteMe'
 
-"call vundle#end()
+call vundle#end()
 filetype plugin indent on
 
 " Settings
@@ -29,7 +29,7 @@ noremap g<Up> <Up>
 noremap <Down> g<Down>
 noremap g<Down> <Down>
 
-"nnoremap gd <Cmd>YcmCompleter GoTo<Enter>
+nnoremap gd <Cmd>YcmCompleter GoTo<Enter>
 
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 
