@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Folder where this repository is
+DIR=~/.dotfiles
+
+installfile() {
+    SOURCE=$1
+    TARGET=$2
+
+    if [ -e $TARGET ]; then
+        echo -e " * \e[31mDelete\e[39m: $TARGET"
+        # Delete
+    fi
+
+    echo -e " * \e[33mLinking\e[39m: $SOURCE \t->\t $TARGET"
+    # Link
+}
+
+for ENTRY in "$DIR/home"/*; do
+    echo -e "[\e[32mhome\e[39m] installing $ENTRY"
+    installfile $ENTRY ~/.${ENTRY##*/}
+done
+
+mkdir -p ~/.config
+
+for ENTRY in "$DIR/config"/*; do
+    echo -e "[\e[32m.config\e[39m] installing $ENTRY"
+    installfile $ENTRY ~/.config/${ENTRY##*/}
+done
