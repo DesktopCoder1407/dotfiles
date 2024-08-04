@@ -7,49 +7,63 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ycm-core/YouCompleteMe'
+Plugin 'preservim/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 call vundle#end()
 filetype plugin indent on
-
-" Settings
-set autoindent expandtab smartindent shiftwidth=0 tabstop=4  " Four space automatic indentation
 syntax on
-set cursorline number splitright
+let g:ycm_enable_semantic_highlighting=1  " Improved syntax highlighting
+
+set autoindent expandtab smartindent shiftwidth=0 tabstop=4  " Automatic indentation, four spaces.
+set cursorline number splitright mouse=n " Visual Display
 set wildmode=longest,list  " Bash-like command completion
 color habamax
-let g:ycm_enable_semantic_highlighting=1
-set mouse=n
-set foldmethod=syntax foldnestmax=3 foldcolumn=2
+"set foldmethod=syntax foldnestmax=3 foldcolumn=2
 
-" -- Keymappings --
+" >>> Keymappings
 
-" Move up/down visual lines when wrapped.
+" Movement
 noremap <Up> g<Up>
 noremap g<Up> <Up>
 noremap <Down> g<Down>
 noremap g<Down> <Down>
-
-nnoremap gd <Cmd>YcmCompleter GoTo<Enter>
-
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-
 noremap Y y$
 
-vmap c> :s/^/\/\/<CR>
-vmap c< :s/^\/\///<CR>
+" Better gd implementation
+nnoremap gd <Cmd>YcmCompleter GoTo<Enter>
 
-" -- Autocommands --
+" Create Line Comments
+vmap <silent> <C-k> :s/^[ ]*/\0\/\//<CR>
+vmap <silent> <C-u> :s/\(^[ ]*\)\/\//\1/<CR>
+nmap <silent> <C-k> :.s/^[ ]*/\0\/\//<CR>
+nmap <silent> <C-u> :.s/\(^[ ]*\)\/\//\1/<CR>
 
-augroup filePositionKeep
+" Function Keys
+noremap <F2> :NERDTreeToggle<CR>
+
+" >>> Autocommands
+
+augroup folding
+    autocmd BufWinEnter * setlocal foldmethod=syntax foldcolumn=2
+    nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+augroup END
+
+augroup c_functions
+    " C-Indentation
+    autocmd BufWinEnter *.c setlocal nosmartindent cindent
+    " Automatically compile on save
+    autocmd BufWritePost *.c silent execute '!gcc %' | redraw!
+    " Keep File Position
     autocmd BufWinLeave *.c mkview!
     autocmd BufWinEnter *.c silent! loadview
 augroup END
 
-augroup setFolding
-    autocmd BufWinEnter * setlocal foldmethod=syntax foldcolumn=2
-augroup END
-
-augroup c_functions
-    autocmd BufWinEnter *.c setlocal nosmartindent cindent
-    autocmd BufWritePost *.c silent execute '!gcc %' | redraw!
+augroup NERDTree
+    " Start NERDTree when Vim starts with a directory argument.
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+        \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+    " Exit Vim if NERDTree is the only window remaining in the only tab.
+    autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
 augroup END

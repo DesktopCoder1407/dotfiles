@@ -4,3 +4,9 @@
 [submodule "home/vim/bundle/YouCompleteMe"]
 	path = home/vim/bundle/YouCompleteMe
 	url = https://github.com/ycm-core/YouCompleteMe.git
+[submodule "home/vim/bundle/nerdtree"]
+	path = home/vim/bundle/nerdtree
+	url = https://github.com/preservim/nerdtree.git
+[submodule "home/vim/bundle/nerdtree-git-plugin"]
+	path = home/vim/bundle/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
