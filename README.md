@@ -1,7 +1,7 @@
 # Installation
  - `git clone --recursive https://github.com/DesktopCoder1407/dotfiles.git ~/.dotfiles`
  - `cd ~/.dotfiles`
- - [Run install script]
+ - `./install`
 
 # Update
  - To update, simply run `<path-to-update-script>`
@@ -31,4 +31,4 @@ Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases)
 `unzip`
 
 # Installer
-`pacman -Syu ###`
+`pacman -Syu base linux linux-firmware git vim cmake make`
