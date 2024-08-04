@@ -31,4 +31,4 @@ Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases)
 `unzip`
 
 # Installer
-`pacman -Syu base linux linux-firmware git vim cmake make`
+`pacman -Syu base linux linux-firmware sudo git vim cmake make`
