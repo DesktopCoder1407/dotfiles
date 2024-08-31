@@ -31,4 +31,4 @@ Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases) `ttf-f
 `unzip`
 
 # Installer
-`pacman -Syu base linux linux-firmware sudo git vim cmake make ttf-firacode-nerd`
+`pacman -Syu base linux linux-firmware sudo git vim ttf-firacode-nerd`

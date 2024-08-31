@@ -1,4 +1,4 @@
-PACMAN.CONF - /etc/pacman.conf
+/etc/pacman.conf -- Copy the following options to the file:
 
 [options]
 HoldPkg = pacman glibc base linux linux-firmware
