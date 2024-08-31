@@ -1,10 +1,10 @@
 # Installation
  - `git clone --recursive https://github.com/DesktopCoder1407/dotfiles.git ~/.dotfiles`
  - `cd ~/.dotfiles`
- - `./install`
+ - `./setup`
 
 # Update
- - To update, simply run `<path-to-update-script>`
+ - To update, simply run `./setup --update`
 
 # Configuration
 [?]

@@ -9,4 +9,7 @@
 	url = https://github.com/preservim/nerdtree.git
 [submodule "home/vim/bundle/nerdtree-git-plugin"]
 	path = home/vim/bundle/nerdtree-git-plugin
-	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+    url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+[submodule "config/nvim"]
+    path = config/nvim
+    url = https://github.com/LazyVim/starter
