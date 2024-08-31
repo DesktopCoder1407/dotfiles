@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Folder where this repository is
-DIR=~/.dotfiles
+DIR=/home/$USER/.dotfiles
 
 git submodule update --init --recursive
 
@@ -18,41 +18,15 @@ installfile() {
     ln -s $SOURCE $TARGET
 }
 
-sudo_installfile() {
-    SOURCE=$1
-    TARGET=$2
-
-    if [ -e $TARGET ]; then
-        echo -e " * \e[31mDelete\e[39m: $TARGET"
-        sudo rm -rf $TARGET || true
-    fi
-
-    echo -e " * \e[33mLinking\e[39m: $SOURCE \t->\t $TARGET"
-    sudo ln -s $SOURCE $TARGET
-}
-
-for ENTRY in "$DIR/assets"/*; do
-    echo -e "[\e[32mhome\e[39m] installing $ENTRY"
-    if [[ ${ENTRY##*/} -eq "fonts" ]]; then
-        for SUB_ENTRY in $ENTRY/*; do
-            sudo mkdir -p /usr/local/share/fonts/ttf
-            sudo_installfile $SUB_ENTRY /usr/local/share/fonts/ttf/${SUB_ENTRY##*/}
-        done
-    fi
-done
-
 mkdir -p ~/.config
 for ENTRY in "$DIR/config"/*; do
     echo -e "[\e[32m.config\e[39m] installing $ENTRY"
     installfile $ENTRY ~/.config/${ENTRY##*/}
 done
 
-for ENTRY in "$DIR/etc"/*; do
-    echo -e "[\e[32m.config\e[39m] installing $ENTRY"
-    sudo_installfile $ENTRY /etc/${ENTRY##*/}
-done
-
 for ENTRY in "$DIR/home"/*; do
     echo -e "[\e[32mhome\e[39m] installing $ENTRY"
     installfile $ENTRY ~/.${ENTRY##*/}
 done
+
+cat setup_instructions

@@ -10,7 +10,7 @@
 [?]
 
 # Fonts
-Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases)  
+Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases) `ttf-firacode-nerd`
 
 # Apps
 | App Type | Chosen App |
@@ -19,8 +19,8 @@ Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases)
 | Shell | `bash` |
 | Display Manager | `ly` |
 | Window Manager | `xfce4` |
-| Terminal | `alacritty` |
-| Text Editor (TUI) | `vim` |
+| Terminal | `kitty` |
+| Text Editor | `vim` |
 | Browser | `chromium` (blink, gtk) |
 | --- | --- |
 | File Manager | `?` |
@@ -31,4 +31,4 @@ Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases)
 `unzip`
 
 # Installer
-`pacman -Syu base linux linux-firmware sudo git vim cmake make`
+`pacman -Syu base linux linux-firmware sudo git vim cmake make ttf-firacode-nerd`

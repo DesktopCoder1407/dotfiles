@@ -1,3 +1,5 @@
+PACMAN.CONF - /etc/pacman.conf
+
 [options]
 HoldPkg = pacman glibc base linux linux-firmware
 IgnorePkg = discord
@@ -9,12 +11,3 @@ Color
 CheckSpace
 VerbosePkgLists
 ParallelDownloads = 6
-
-[core]
-Include = /etc/pacman.d/mirrorlist
-
-[extra]
-Include = /etc/pacman.d/mirrorlist
-
-[multilib]
-Include = /etc/pacman.d/mirrorlist
