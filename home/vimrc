@@ -48,8 +48,6 @@ augroup END
 augroup c_functions
     " C-Indentation
     autocmd BufWinEnter *.c setlocal nosmartindent cindent
-    " Automatically compile on save
-    autocmd BufWritePost *.c silent execute '!gcc %' | redraw!
     " Keep File Position
     autocmd BufWinLeave *.c mkview!
     autocmd BufWinEnter *.c silent! loadview
