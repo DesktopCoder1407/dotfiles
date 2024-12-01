@@ -17,6 +17,7 @@ export PS1="${BYELLOW}\u:\w${PS_CLEAR}$ "
 alias ls='ls --color=auto'
 alias ll='ls -lhA --color=auto'
 alias grep='grep --color=auto'
+alias img='kitten icat'
 
 shopt -s checkwinsize  # Let bash know when the terminal has been resized.
 
@@ -35,17 +36,6 @@ aurman() {
     makepkg -sc #makepkg -src
 
     echo "To install, run pacman -U '*.tar.zst'"
-}
-
-bitwarden_username() {
-    # Input is the account to get the username for
-    rbw list --fields=name,user | grep -i $1
-}
-
-bitwarden_password() {
-    # Input is the account to get the password for
-    bitwarden_username $1
-    rbw get $1 | xclip
 }
 
 download_music() {
