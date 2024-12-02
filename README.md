@@ -4,7 +4,10 @@
  - `./setup`
 
 # Update
- - To update, simply run `./setup --update`
+ - To update, simply run `./setup` again.
+
+# Uninstall
+ - To uninstall, run `./setup --uninstall`.
 
 # Configuration
 [?]
@@ -17,18 +20,18 @@ Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases) `ttf-f
 | --- | --- |
 | Bootloader | `systemd-boot` |
 | Shell | `bash` |
-| Display Manager | `ly` |
-| Window Manager | `xfce4` |
+| Display Manager | `ly` or `sddm` or `greetd` |
+| Window Manager | `xfce4` or `hyprland` |
 | Terminal | `kitty` |
-| Text Editor | `vim` |
-| Browser | `chromium` (blink, gtk) |
+| Text Editor | `vim` or `nvim` |
+| Browser | `chromium` (blink, gtk) or `firefox` (gecko, gtk) |
 | --- | --- |
 | File Manager | `?` |
 | App Launcher | `?` |
 | Audio | `pipewire` |
 
 # Optional Apps
-`unzip`
+`unzip`, `discord`
 
 # Installer
 `pacman -Syu base linux linux-firmware sudo git vim ttf-firacode-nerd`

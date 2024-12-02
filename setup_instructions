@@ -2,7 +2,7 @@
 
 [options]
 HoldPkg = pacman glibc base linux linux-firmware
-IgnorePkg = discord
+IgnorePkg = 
 IgnoreGroup = 
 Architecture = auto
 SigLevel = Required DatabaseOptional
