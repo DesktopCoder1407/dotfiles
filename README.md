@@ -10,7 +10,7 @@
  - To uninstall, run `./setup --uninstall`.
 
 # Configuration
-[?]
+ - Modification of files within this repository will modify the configuration files linked. To change what is installed, modify the setup script to not link specific directories.
 
 # Fonts
 Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases) `ttf-firacode-nerd`
@@ -19,19 +19,22 @@ Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases) `ttf-f
 | App Type | Chosen App |
 | --- | --- |
 | Bootloader | `systemd-boot` |
+| Display Manager | `greetd-tuigreet` |
+| Window Manager | `hyprland` |
 | Shell | `bash` |
-| Display Manager | `ly` or `sddm` or `greetd` |
-| Window Manager | `xfce4` or `hyprland` |
+| Audio | `pipewire` and `wireplumber` |
+| Notification Daemon | `dunst` |
+| Idle Daemon | `hypridle` |
+| XDG Protocols | `xdg-desktop-portal-hyprland` |
+| --- | --- |
+| App Launcher | `rofi-wayland` |
+| Lock Screen | `hyprlock` |
 | Terminal | `kitty` |
 | Text Editor | `vim` or `nvim` |
-| Browser | `chromium` (blink, gtk) or `firefox` (gecko, gtk) |
-| --- | --- |
-| File Manager | `?` |
-| App Launcher | `?` |
-| Audio | `pipewire` |
+| Web Browser | `chromium` (blink, gtk) or `firefox` (gecko, gtk) |
 
-# Optional Apps
-`unzip`, `discord`
+# Recomended Apps
+`acpi`, `brightnessctl`, `iwd`, `openssh`, `udiskie`
 
 # Installer
 `pacman -Syu base linux linux-firmware sudo git vim ttf-firacode-nerd`
