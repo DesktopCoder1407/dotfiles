@@ -5,39 +5,21 @@
 export HISTCONTROL="erasedups:ignorespace"
 export EDITOR="vim"
 
+# Hooks
+[[ -f /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
+
 # Shell Prompt Customization
 BYELLOW='\[\033[01;33m\]'
 PS_CLEAR='\[\033[0m\]'
 export PS1="${BYELLOW}\u:\w${PS_CLEAR}$ "
 
-# Hooks
-[[ -f /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
-
 # Aliases
 alias ls='ls --color=auto'
 alias ll='ls -lhA --color=auto'
 alias grep='grep --color=auto'
-alias img='kitten icat'
 
 shopt -s checkwinsize  # Let bash know when the terminal has been resized.
 
-# Simple self-made scripts.
-aurman() {
-    # Input is the git-clone URL of the package.
-    pkg_name=$(echo $1 | sed "s;https\?://aur\.archlinux\.org/\(.*\)\.git;\1;;")
-
-    cd ~/builds
-    git clone $1
-    cd $pkg_name
-
-    less PKGBUILD
-    sleep .1
-
-    makepkg -sc #makepkg -src
-
-    echo "To install, run pacman -U '*.tar.zst'"
-}
-
 download_music() {
-    yt-dlp -x --audio-format flac $1
+    yt-dlp -x --audio-format mp3 --audio-quality 320k $1
 }

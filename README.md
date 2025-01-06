@@ -27,6 +27,7 @@ Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases) `ttf-f
 | Idle Daemon | `hypridle` |
 | XDG Protocols | `xdg-desktop-portal-hyprland` |
 | --- | --- |
+| AUR Utility | [yay](https://github.com/Jguer/yay) |
 | App Launcher | `rofi-wayland` |
 | Lock Screen | `hyprlock` |
 | Terminal | `kitty` |
