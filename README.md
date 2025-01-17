@@ -30,10 +30,10 @@ Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases) `ttf-f
 | AUR Utility | [yay](https://github.com/Jguer/yay) |
 | App Launcher | `rofi-wayland` |
 | Lock Screen | `hyprlock` |
-| Terminal | `kitty` |
 | Screenshot Utility | `grim` and `slurp` |
-| Clipboard Utility | `cliphist` |
+| Terminal | `kitty` |
 | Text Editor | `vim` or `nvim` |
+| Clipboard Utility | `cliphist` |
 | Web Browser | `chromium` (blink, gtk) or `firefox` (gecko, gtk) |
 
 # Recomended Apps
