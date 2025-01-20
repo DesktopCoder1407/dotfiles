@@ -23,7 +23,7 @@ Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases) `ttf-f
 | Window Manager | `hyprland` |
 | Shell | `bash` |
 | Audio | `pipewire` and `wireplumber` |
-| Notification Daemon | `dunst` |
+| Notification Daemon | `mako` |
 | Idle Daemon | `hypridle` |
 | XDG Protocols | `xdg-desktop-portal-hyprland` |
 | --- | --- |
@@ -33,7 +33,7 @@ Main Font : [Fira Code](https://github.com/ryanoasis/nerd-fonts/releases) `ttf-f
 | Screenshot Utility | `grim` and `slurp` |
 | Terminal | `kitty` |
 | Text Editor | `vim` or `nvim` |
-| Clipboard Utility | `cliphist` |
+| Clipboard Utility | `wl-clipboard` |
 | Web Browser | `chromium` (blink, gtk) or `firefox` (gecko, gtk) |
 
 # Recomended Apps

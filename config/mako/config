@@ -1,0 +1,11 @@
+# Global Config
+max-history=8
+
+# Binding Options
+on-button-left=invoke-default-action
+on-button-middle=dismiss --no-history
+on-button-right=dismiss
+
+# Style Options
+font=Fira Code Nerd Font 12
+border-radius=10
