@@ -7,5 +7,18 @@ on-button-middle=dismiss --no-history
 on-button-right=dismiss
 
 # Style Options
-font=Fira Code Nerd Font 12
+font=Fira Code Nerd Font 10
+background-color=#181818cc
+text-color=#b9b9b9ff
+
+width=400
+height=200
+
+border-size=2
+border-color=#3b3b3bee
 border-radius=10
+
+#format
+
+default-timeout=5000
+output="DP-1"
