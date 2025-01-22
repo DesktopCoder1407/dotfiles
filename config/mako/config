@@ -1,24 +1,24 @@
 # Global Config
 max-history=8
 
-# Binding Options
-on-button-left=invoke-default-action
-on-button-middle=dismiss --no-history
-on-button-right=dismiss
-
 # Style Options
-font=Fira Code Nerd Font 10
-background-color=#181818cc
+font=Fira Code Nerd Font 12
+background-color=#181818bb
 text-color=#b9b9b9ff
 
 width=400
 height=200
+padding=10
 
 border-size=2
-border-color=#3b3b3bee
-border-radius=10
+border-color=#c7704dff
+border-radius=8
 
-#format
+#progress-color=source #122b3ebb
+progress-color=source #368aebbb
 
-default-timeout=5000
-output="DP-1"
+format=<span variant='small-caps' weight='heavy'>%a</span>\n<b>%s</b>\n%b
+
+default-timeout=7000
+output=DP-1
+layer=overlay
