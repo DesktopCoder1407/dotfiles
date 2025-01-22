@@ -1,16 +1,26 @@
 {
+    "layer": "bottom",
     "position": "bottom",
-    "height": 38,
-    "spacing": 4,
     "mode": "dock",
+    "exclusive": true,
+    "gtk-layer-shell": true,
+    "margin-bottom": -1,
+    "passthrough": false,
+    "height": 41,
+    "reload_style_on_change": true,
     /* Modules */
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces"/*,
+        "wlr/taskbar"*/
     ],
     "modules-center": [
         "hyprland/window"
     ],
     "modules-right": [
+        "cpu",
+        "temperature",
+        "memory",
+        "disk",
         "tray",
         "network",
         "wireplumber",
@@ -27,6 +37,15 @@
         "on-scroll-up": "hyprctl dispatch workspace r+1",
         "on-scroll-down": "hyprctl dispatch workspace r-1"
     },
+    /*"wlr/taskbar": {
+        "format": "{icon} {title:.25}",
+        "icon-size": 28,
+        "spacing": 3,
+        "on-click-middle": "close",
+        "tooltip-format": "{title}",
+        "ignore-list": [],
+        "on-click": "activate"
+    },*/
     /* Center Modules */
     "hyprland/window": {
         "format": "{title}",
@@ -35,6 +54,35 @@
         "icon-size": 24
     },
     /* Right Modules */
+    "cpu": {
+        "interval": 5,
+        "format": "  {usage}%",
+        "max-length": 10,
+        "tooltip": false
+    },
+    "temperature": {
+        "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
+        "input-filename": "temp2_input",
+        "critical-threshold": 65,
+        "tooltip": false,
+        "format-critical": "({temperatureC}°C)",
+        "format": "({temperatureC}°C)"
+    },
+    "memory": {
+        "interval": 10,
+        "format": "  {percentage}%",
+        "max-length": 10,
+        "tooltip": true,
+        "tooltip-format": "RAM - {used:0.1f}GiB used of {total:0.1f}"
+    },
+    "disk": {
+        "interval": 300,
+        "format": "󰋊  {percentage_used}%",
+        "path": "/",
+        "tooltip": true,
+        "unit": "GB",
+        "tooltip-format":  "DISK - {free} free of {total}"
+    },
     "tray": {
         "icon-size": 18,
         "spacing": 3
