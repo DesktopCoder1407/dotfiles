@@ -1,0 +1,13 @@
+configuration {
+	font: "Fira Code Nerd Font Mono 14";
+	show-icons: true;
+	icon-theme: "Breeze-Dark";
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  icon {
+      theme: "Breeze-Dark";
+  }
+}
+@theme "Arc-Dark"
