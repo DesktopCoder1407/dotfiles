@@ -1,12 +1,10 @@
 #!/bin/bash
 
-process_args() {
-    if [[ "$@" != "" ]]
-    then
-        rbw get $1 | wl-copy -o
-        exit 0
-    fi
-}
+if [[ "$@" != "" ]]
+then
+    rbw get $1 | wl-copy
+    exit 0
+fi
 
 display_entry_names() {
     echo -en "\0message\x1f<b>Alt+c:</b> Copy Password | <b>Alt+u:</b> Copy Username | <b>Alt+m:</b> Menu | <b>Alt+s:</b> Sync\n"
@@ -15,6 +13,6 @@ display_entry_names() {
 }
 
 
-process_args
+#process_args
 
 display_entry_names

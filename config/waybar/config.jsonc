@@ -19,13 +19,13 @@
     ],
     /* Left Modules */
     "hyprland/workspaces": {
-        "format": "{name} - {windows}",
+        "format": " {name} ",
         "show-special": true,
         "special-visible-only": true,
         "icon-size": 32,
         "spacing": 16,
-        "on-scroll-up": "hyprctl dispatch workspace r+1",
-        "on-scroll-down": "hyprctl dispatch workspace r-1"
+        "sort-by": "id",
+        "persistent-workspaces": { "*": 5 }
     },
     /* Center Modules */
     "hyprland/window": {
