@@ -6,14 +6,14 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'ycm-core/YouCompleteMe'
+"Plugin 'ycm-core/YouCompleteMe'
 Plugin 'preservim/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 call vundle#end()
 filetype plugin indent on
 syntax on
-let g:ycm_enable_semantic_highlighting=1  " Improved syntax highlighting
+"let g:ycm_enable_semantic_highlighting=1  " Improved syntax highlighting
 
 set autoindent expandtab smartindent shiftwidth=0 tabstop=4  " Automatic indentation, four spaces.
 set cursorline number splitright mouse=n " Visual Display
