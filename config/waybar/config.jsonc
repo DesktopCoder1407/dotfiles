@@ -11,9 +11,9 @@
 
     // MODULE LAYOUT
 
-    "modules-left": [ "custom/notification", "clock", "tray" ],
-    "modules-center": [ "hyprland/workspaces" ],
-    "modules-right": [ "group/expand", "bluetooth", "wireplumber", "network", "battery" ],
+    "modules-left": [ "custom/notification", "clock", "tray", "hyprland/window" ],
+    "modules-center": [ "hyprland/workspaces", "mpris" ],
+    "modules-right": [ "group/expand", "privacy", "bluetooth", "wireplumber", "network", "battery" ],
 
     // MODULE DEFINES
 
@@ -73,8 +73,22 @@
         }
     },
 
-    //TODO: MPD for Music?
-    //TODO: MPRIS for Music?
+    "mpris": {
+        "format": "{player_icon} <b>{title}</b> - <i>{artist}</i>",
+        "format-paused": "{status_icon} <i>{title} - {artist}</i>",
+        "player-icons": {
+            "default": "󰎆",
+            "chromium": "󰗃"
+        },
+        "status-icons": {
+            "default": "󰎆",
+            "paused": "󰏤"
+        },
+        "title-len": 30,
+        "interval": 1,
+        "dynamic-separator": "\n",
+        "tooltip-format": "{dynamic}"
+    },
 
     "memory": {
         "format": "{percentage}% ",
@@ -94,8 +108,26 @@
         "tooltip-format-ethernet": "{bandwidthTotalBits} 󰲝"
     },
 
-    //TODO: Privacy Module for Audio/Screen Sharing
-    //TODO: CPU and GPU Temperature Monitoring (Temperature)
+    "privacy": {
+        "icon-size": 16,
+        "icon-spacing": 8,
+        "modules": [
+            {
+                "type": "screenshare"
+            },
+            {
+                "type": "audio-in"
+            }
+        ]
+    },
+
+    "temperature": {
+        "format": "{temperatureC}°C {icon}",
+        "format-critical": "{temperatureC}°C ",
+        "format-icons": [ "", "", "", "" ],
+        "hwmon-path": "/sys/devices/pci0000:00/0000:00:14.0/i2c-8/8-0051/hwmon/hwmon3/temp1_input",
+        "critical-threshold": 60
+    },
 
     "tray": {
         "icon-size": 16,
@@ -131,28 +163,19 @@
         "sort-by": "id"
     },
 
+    "hyprland/window": {
+        "format": "{title}",
+        "rewrite": "{}",
+        "separate-outputs": true
+    },
+
     // CUSTOM MODULE DEFINES
     // TODO: Work on Custom Modules
-
-    "group/expand": {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 600,
-            "transition-to-left": true,
-            "click-to-reveal": true
-        },
-        "modules": ["custom/expand", "cpu", "memory" ]
-    },
 
     "custom/notification": {
         "tooltip": false,
         "format": "󰚢",
             //"on-click": "makoctl history | rofi -dmenu",
             "escape": true
-    },
-
-    "custom/expand": {
-        "format": "",
-        "tooltip": false
     }
 } 
