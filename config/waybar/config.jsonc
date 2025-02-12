@@ -11,16 +11,21 @@
 
     // MODULE LAYOUT
 
-    "modules-left": [ "custom/notification", "clock", "tray", "hyprland/window" ],
+    "modules-left": [ "custom/notification", "clock#time", "clock#date", "tray", "hyprland/window" ],
     "modules-center": [ "hyprland/workspaces", "mpris" ],
     "modules-right": [ "group/expand", "privacy", "bluetooth", "wireplumber", "network", "battery" ],
 
     // MODULE DEFINES
 
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "tooltip": false
+    },
+
     "battery": {
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% 󰂄",
-        "format-plugged": "{capacity}% 󰚥",
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
         "format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
         //"design-capacity": true,
         "interval": 20,
@@ -32,37 +37,40 @@
     },
 
     "bluetooth": {
-        "format": "󰂯 {status}",
-        "format-disabled": "",
+        "format": "󰂯",
+        "format-disabled": "󰂲",
         "format-off": "󰂲",
-        "format-on": "󰂯",
-        "format-connected": "󰂯 {num_connections}-{status}",
-        "format-connected-battery":  "󰥉 {device_battery_percentage}%",
-        //"on-click": "kitty bluetoothctl",
+        "format-connected": "󰂱",
+        "format-connected-battery": "󰥉 {device_battery_percentage}%",
+        "interval": 1,
+        "on-click": "rofi -show bluetooth",
         "tooltip-format": "{num_connections} connected",
         "tooltip-format-off": "Bluetooth Off",
-        "tooltip-format-on": "Bluetooth On",
-        "tooltip-format-connected": "Connected to:\n{device_enumerate}",
+        "tooltip-format-connected": "{num_connections} connected:\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}",
-        "tooltip-format-enumerate-connected-battery": "{device_alias} - {device_battery_percentage}% 󰥉"
+        "tooltip-format-enumerate-connected-battery": "{device_alias}: 󰥉 {device_battery_percentage}%"
     }, 
 
     "cpu": {
-        "format": "{usage}% ",
+        "format": " {usage}%",
         "interval": 1,
         "tooltip": false
     },
 
-    "clock": {
-        "format": "{:%R - %m/%d/%Y}",
-        "interval": 1,   
+    "clock#time": {
+        "format": "󱑎  {:%H:%M}",
+        "tooltip-format": "Standard Time: {:%I:%M %p}"
+    },
+
+    "clock#date": {
+        "format": "󰸗 {:%m-%d}",
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
             "format": {
                 "today": "<b><u>{}</u></b>",
                 "weeks": "<b>W{}</b>"
             },
-            "mode-mon-col": 3,
+            "mode-mon-col": 4,
             "weeks-pos": "left"
         },
         "actions": {
@@ -81,7 +89,6 @@
             "chromium": "󰗃"
         },
         "status-icons": {
-            "default": "󰎆",
             "paused": "󰏤"
         },
         "title-len": 30,
@@ -91,7 +98,7 @@
     },
 
     "memory": {
-        "format": "{percentage}% ",
+        "format": " {percentage}%",
         "interval": 20,
         "tooltip-format": "{used:0.1f}/{total:0.1f} GB RAM\n{swapUsed:0.1f}/{swapTotal:0.1f} GB SWAP"
     },
@@ -121,12 +128,20 @@
         ]
     },
 
-    "temperature": {
-        "format": "{temperatureC}°C {icon}",
-        "format-critical": "{temperatureC}°C ",
+    "temperature#cpu": {
+        "format": "{icon} {temperatureC}°C",
+        "format-critical": " {temperatureC}°C",
         "format-icons": [ "", "", "", "" ],
         "hwmon-path": "/sys/devices/pci0000:00/0000:00:14.0/i2c-8/8-0051/hwmon/hwmon3/temp1_input",
         "critical-threshold": 60
+    },
+
+    "temperature#gpu": {
+        "format": "{icon} {temperatureC}°C",
+        "format-critical": " {temperatureC}°C",
+        "format-icons": [ "", "", "", "" ],
+        "hwmon-path": "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon/hwmon1/temp1_input",
+        "critical-threshold": 70
     },
 
     "tray": {
@@ -136,13 +151,13 @@
     },
 
     "wireplumber": {
-        "format": " {icon} ",
-        "format-muted": " 󰝟 ",
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 {volume}%",
         "format-icons": [ "󰕿", "󰖀", "󰕾" ],
         "scroll-step": 5,
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "max-volume": 100,
-        "tooltip-format": "Volume: {volume}%"
+        "tooltip-format": "{node_name}\nVolume: {volume}%"
     },
 
     // HYPRLAND MODULE DEFINES
@@ -172,10 +187,18 @@
     // CUSTOM MODULE DEFINES
     // TODO: Work on Custom Modules
 
+    "custom/distro": {
+        "format": "󰣇 ",
+        "tooltip": false
+    },
+
     "custom/notification": {
         "tooltip": false,
-        "format": "󰚢",
+        "format": "󰚢 ",
             //"on-click": "makoctl history | rofi -dmenu",
             "escape": true
+    },
+
+    "custom/power": {
     }
 } 
