@@ -11,9 +11,9 @@
 
     // MODULE LAYOUT
 
-    "modules-left": [ "custom/notification", "clock#time", "clock#date", "tray", "hyprland/window" ],
+    "modules-left": [ "custom/notification", "idle_inhibitor", "clock#time", "clock#date", "tray", "hyprland/window" ],
     "modules-center": [ "hyprland/workspaces", "mpris" ],
-    "modules-right": [ "group/expand", "privacy", "bluetooth", "wireplumber", "network", "battery" ],
+    "modules-right": [ "group/expand", "privacy", "bluetooth", "wireplumber", "network", "battery", "custom/power" ],
 
     // MODULE DEFINES
 
@@ -58,7 +58,7 @@
     },
 
     "clock#time": {
-        "format": "󱑎  {:%H:%M}",
+        "format": "{:%H:%M}",
         "tooltip-format": "Standard Time: {:%I:%M %p}"
     },
 
@@ -79,6 +79,18 @@
             "on-scroll-up": "shift_down",
             "on-scroll-down": "shift_up"
         }
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰥔 ",
+            "deactivated": "󱑎 "
+        },
+        "start-activated": false,
+        "tooltip": true,
+        "tooltip-format-activated": "Idling Disabled",
+        "tooltip-format-deactivated": "Idling Enabled"
     },
 
     "mpris": {
@@ -111,8 +123,8 @@
         "interval": 1,
         //"on-click": "kitty iwctl",
         "tooltip-format-disconnected": "Not Connected",
-        "tooltip-format-wifi": "{essid} - {signalStrength}% {icon}",
-        "tooltip-format-ethernet": "{bandwidthTotalBits} 󰲝"
+        "tooltip-format-wifi": "{essid} - {signalStrength}% {icon} ",
+        "tooltip-format-ethernet": "{bandwidthTotalBits} 󰲝 "
     },
 
     "privacy": {
@@ -180,12 +192,15 @@
 
     "hyprland/window": {
         "format": "{title}",
-        "rewrite": "{}",
+        "rewrite": {
+            ".*@.*:([~/].*)": "  Terminal [$1]",
+            "kitty": "  Terminal [$1]",
+            "(.*) - Chromium": "  $1"
+        },
         "separate-outputs": true
     },
 
     // CUSTOM MODULE DEFINES
-    // TODO: Work on Custom Modules
 
     "custom/distro": {
         "format": "󰣇 ",
@@ -193,12 +208,16 @@
     },
 
     "custom/notification": {
-        "tooltip": false,
         "format": "󰚢 ",
-            //"on-click": "makoctl history | rofi -dmenu",
-            "escape": true
+        "tooltip": true,
+        "tooltip-format": "Notifications",
+        "on-click": ""
     },
 
     "custom/power": {
+        "format": "󰐥 ",
+        "tooltip": true,
+        "tooltip-format": "Power Menu",
+        "on-click": "rofi -show power_menu -config \"~/.config/rofi/power_menu.rasi\""
     }
 } 
