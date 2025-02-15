@@ -43,7 +43,7 @@
         "format-connected": "󰂱",
         "format-connected-battery": "󰥉 {device_battery_percentage}%",
         "interval": 1,
-        "on-click": "rofi -show bluetooth",
+        "on-click": "rofi -show bluetooth_menu -config \"~/.config/rofi/bluetooth_menu.rasi\"",
         "tooltip-format": "{num_connections} connected",
         "tooltip-format-off": "Bluetooth Off",
         "tooltip-format-connected": "{num_connections} connected:\n{device_enumerate}",
