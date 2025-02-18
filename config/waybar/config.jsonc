@@ -11,29 +11,92 @@
 
     // MODULE LAYOUT
 
-    "modules-left": [ "custom/notification", "idle_inhibitor", "clock#time", "clock#date", "tray", "hyprland/window" ],
-    "modules-center": [ "hyprland/workspaces", "mpris" ],
-    "modules-right": [ "group/expand", "privacy", "bluetooth", "wireplumber", "network", "battery", "custom/power" ],
+    "modules-left": [ "custom/notification", "hyprland/workspaces", "hyprland/window" ],
+    "modules-center": [ "group/hardware", "idle_inhibitor", "clock", "group/network" ],
+    "modules-right": [ "mpris", "wireplumber", "group/devices", "tray", "custom/power" ],
 
-    // MODULE DEFINES
+    // GROUP: HARDWARE
+
+    "group/hardware": {
+       "orientation": "inherit",
+       "modules": [ "cpu", "temperature#cpu", "memory", "temperature#gpu" ] 
+    },
+
+    "cpu": {
+        "format": "󰻠  {usage}%",
+        "interval": 15,
+        "tooltip": false
+    },
+
+    "temperature#cpu": {
+        "format": "󰻠{icon}  {temperatureC}°C",
+        "format-critical": "󰻠  {temperatureC}°C",
+        "format-icons": [ "", "", "", "" ],
+        "hwmon-path": "/sys/devices/pci0000:00/0000:00:14.0/i2c-8/8-0051/hwmon/hwmon3/temp1_input",
+        "interval": 15,
+        "critical-threshold": 50,
+        "tooltip-format": "CPU Temp: {temperatureC}°C"
+    },
+
+    "memory": {
+        "format": "󰍛  {used:0.1f}GB",
+        "interval": 60,
+        "tooltip-format": "{used:0.1f}/{total:0.1f} GB RAM\n{swapUsed:0.1f}/{swapTotal:0.1f} GB SWAP"
+    },
+
+    "temperature#gpu": {
+        "format": "󰾲{icon} {temperatureC}°C",
+        "format-critical": "󰾲 {temperatureC}°C",
+        "format-icons": [ "", "", "", "" ],
+        "hwmon-path": "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon/hwmon1/temp1_input",
+        "interval": 15,
+        "critical-threshold": 70,
+        "tooltip-format": "GPU Temp: {temperatureC}°C"
+    },
+
+    // GROUP: DEVICES
+
+    "group/devices": {
+        "orientation": "inherit",
+        "modules": [ "backlight", "battery" ]
+    },
 
     "backlight": {
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "format": "{icon}  {percent}%",
+        "format-icons": [ "", "", "", "", "", "", "", "", "" ],
         "tooltip": false
     },
 
     "battery": {
-        "format": "{icon} {capacity}%",
-        "format-charging": "󰂄 {capacity}%",
+        "format": "{icon}  {capacity}%",
+        "format-charging": "󰂄  {capacity}%",
         "format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
         //"design-capacity": true,
-        "interval": 20,
+        "interval": 15,
         "states": {
             "good": 95,
             "warning": 30,
-            "critical": 15
+            "critical": 10
         }
+    },
+
+    // GROUP: NETWORK
+
+    "group/network": {
+        "orientation": "inherit",
+        "modules": [ "network", "bluetooth" ]
+    },
+
+    "network": {
+        "format-wifi": "{icon}",
+        "format-ethernet":"󰲝",
+        "format-disconnected": "",
+        "format-icons": [ "󰤯", "󰤟", "󰤢", "󰤢", "󰤨" ],
+        "interval": 30,
+        "on-click": "rofi -show wifi_menu -config \"~/.config/rofi/wifi_menu.rasi\"",
+        "tooltip-format-disconnected": "Not Connected",
+        "tooltip-format-wifi": "{essid} - {signalStrength}% {icon} ",
+        "tooltip-format-ethernet": "{bandwidthTotalBits} 󰲝 "
     },
 
     "bluetooth": {
@@ -41,21 +104,17 @@
         "format-disabled": "󰂲",
         "format-off": "󰂲",
         "format-connected": "󰂱",
-        "format-connected-battery": "󰥉 {device_battery_percentage}%",
-        "interval": 1,
+        "format-connected-battery": "󰥉  {device_battery_percentage}%",
+        "interval": 15,
         "on-click": "rofi -show bluetooth_menu -config \"~/.config/rofi/bluetooth_menu.rasi\"",
         "tooltip-format": "{num_connections} connected",
         "tooltip-format-off": "Bluetooth Off",
         "tooltip-format-connected": "{num_connections} connected:\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}",
         "tooltip-format-enumerate-connected-battery": "{device_alias}: 󰥉 {device_battery_percentage}%"
-    }, 
-
-    "cpu": {
-        "format": " {usage}%",
-        "interval": 1,
-        "tooltip": false
     },
+
+    // GROUP: XX
 
     "clock#time": {
         "format": "{:%H:%M}",
@@ -81,11 +140,16 @@
         }
     },
 
+    "clock": {
+        "format": "{:%m-%d-%y | %H:%M}",
+        "tooltip-format": "Standard Time: {:%I:%M %p}\n\n<tt>{calendar}</tt>"
+    },
+
     "idle_inhibitor": {
-        "format": "{icon}",
+        "format": "{icon} ",
         "format-icons": {
-            "activated": "󰥔 ",
-            "deactivated": "󱑎 "
+            "activated": "󱙱",
+            "deactivated": "󰌿"
         },
         "start-activated": false,
         "tooltip": true,
@@ -109,23 +173,6 @@
         "tooltip-format": "{dynamic}"
     },
 
-    "memory": {
-        "format": " {percentage}%",
-        "interval": 20,
-        "tooltip-format": "{used:0.1f}/{total:0.1f} GB RAM\n{swapUsed:0.1f}/{swapTotal:0.1f} GB SWAP"
-    },
-
-    "network": {
-        "format-wifi": "{icon}",
-        "format-ethernet":"󰲝",
-        "format-disconnected": "",
-        "format-icons": [ "󰤯", "󰤟", "󰤢", "󰤢", "󰤨" ],
-        "interval": 1,
-        //"on-click": "kitty iwctl",
-        "tooltip-format-disconnected": "Not Connected",
-        "tooltip-format-wifi": "{essid} - {signalStrength}% {icon} ",
-        "tooltip-format-ethernet": "{bandwidthTotalBits} 󰲝 "
-    },
 
     "privacy": {
         "icon-size": 16,
@@ -138,22 +185,6 @@
                 "type": "audio-in"
             }
         ]
-    },
-
-    "temperature#cpu": {
-        "format": "{icon} {temperatureC}°C",
-        "format-critical": " {temperatureC}°C",
-        "format-icons": [ "", "", "", "" ],
-        "hwmon-path": "/sys/devices/pci0000:00/0000:00:14.0/i2c-8/8-0051/hwmon/hwmon3/temp1_input",
-        "critical-threshold": 60
-    },
-
-    "temperature#gpu": {
-        "format": "{icon} {temperatureC}°C",
-        "format-critical": " {temperatureC}°C",
-        "format-icons": [ "", "", "", "" ],
-        "hwmon-path": "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon/hwmon1/temp1_input",
-        "critical-threshold": 70
     },
 
     "tray": {
@@ -193,22 +224,18 @@
     "hyprland/window": {
         "format": "{title}",
         "rewrite": {
-            ".*@.*:([~/].*)": "  Terminal [$1]",
-            "kitty": "  Terminal [$1]",
-            "(.*) - Chromium": "  $1"
+            ".*@.*:([~/].*)": "  $1",
+            "(.*) - Chromium": "<span foreground='#4486B9'> </span> $1",
+            "(.*) - YouTube(.*)": "<span foreground='#FF0033'>󰗃 </span>$1"
         },
+        "max-length": 40,
         "separate-outputs": true
     },
 
-    // CUSTOM MODULE DEFINES
-
-    "custom/distro": {
-        "format": "󰣇 ",
-        "tooltip": false
-    },
+    // CUSTOM MODULES
 
     "custom/notification": {
-        "format": "󰚢 ",
+        "format": "󰚢",
         "tooltip": true,
         "tooltip-format": "Notifications",
         "on-click": ""
