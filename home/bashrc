@@ -8,6 +8,9 @@ export EDITOR="vim"
 # Hooks
 [[ -f /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
 
+# Wal Colors
+(cat ~/.cache/wal/sequences &)
+
 # Shell Prompt Customization
 BYELLOW='\[\033[01;33m\]'
 PS_CLEAR='\[\033[0m\]'
