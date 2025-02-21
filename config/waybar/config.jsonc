@@ -4,22 +4,30 @@
 {
     "layer": "top",
     "position": "top",
-    //"margin": "0 0 0 0",
-    "spacing": 4,
+    "spacing": 6,
     "mode": "dock",
     "reload_style_on_change": true,
 
     // MODULE LAYOUT
 
-    "modules-left": [ "custom/notification", "hyprland/workspaces", "hyprland/window" ],
-    "modules-center": [ "group/hardware", "idle_inhibitor", "clock", "group/network" ],
-    "modules-right": [ "mpris", "wireplumber", "group/devices", "tray", "custom/power" ],
+    "modules-left": [ "custom/notification", "hyprland/workspaces" ],
+    "modules-center": [ "clock" ],
+    "modules-right": [ "group/hardware", "wireplumber", "group/devices", "tray", "custom/power" ],
 
     // GROUP: HARDWARE
 
     "group/hardware": {
        "orientation": "inherit",
-       "modules": [ "cpu", "temperature#cpu", "memory", "temperature#gpu" ] 
+       "modules": [ "custom/menu", "cpu", "temperature#cpu", "memory", "temperature#gpu" ],
+       "drawer": {
+           "transition-left-to-right": true,
+           "click-to-reveal": true
+       }
+    },
+
+    "custom/menu": {
+        "format": "󰍜",
+        "tooltip": false
     },
 
     "cpu": {
@@ -58,7 +66,32 @@
 
     "group/devices": {
         "orientation": "inherit",
-        "modules": [ "backlight", "battery" ]
+        "modules": [ "idle_inhibitor", "privacy", "backlight", "battery" ]
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon} ",
+        "format-icons": {
+            "activated": "󱙱",
+            "deactivated": "󰌿"
+        },
+        "start-activated": false,
+        "tooltip": true,
+        "tooltip-format-activated": "Idling Disabled",
+        "tooltip-format-deactivated": "Idling Enabled"
+    },
+
+    "privacy": {
+        "icon-size": 16,
+        "icon-spacing": 8,
+        "modules": [
+            {
+                "type": "screenshare"
+            },
+            {
+                "type": "audio-in"
+            }
+        ]
     },
 
     "backlight": {
@@ -114,15 +147,15 @@
         "tooltip-format-enumerate-connected-battery": "{device_alias}: 󰥉 {device_battery_percentage}%"
     },
 
-    // GROUP: XX
+    // NO GROUP
 
     "clock#time": {
-        "format": "{:%H:%M}",
+        "format": "󰥔  {:%H:%M}",
         "tooltip-format": "Standard Time: {:%I:%M %p}"
     },
 
     "clock#date": {
-        "format": "󰸗 {:%m-%d}",
+        "format": "󰸗  {:%a, %d %b}",
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
             "format": {
@@ -141,20 +174,22 @@
     },
 
     "clock": {
-        "format": "{:%m-%d-%y | %H:%M}",
-        "tooltip-format": "Standard Time: {:%I:%M %p}\n\n<tt>{calendar}</tt>"
-    },
-
-    "idle_inhibitor": {
-        "format": "{icon} ",
-        "format-icons": {
-            "activated": "󱙱",
-            "deactivated": "󰌿"
+        "format": "{:%a, %d %b | %H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "format": {
+                "today": "<b><u>{}</u></b>",
+                "weeks": "<b>W{}</b>"
+            },
+            "mode-mon-col": 4,
+            "weeks-pos": "left"
         },
-        "start-activated": false,
-        "tooltip": true,
-        "tooltip-format-activated": "Idling Disabled",
-        "tooltip-format-deactivated": "Idling Enabled"
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-middle": "shift_reset",
+            "on-scroll-up": "shift_down",
+            "on-scroll-down": "shift_up"
+        }
     },
 
     "mpris": {
@@ -162,7 +197,7 @@
         "format-paused": "{status_icon} <i>{title} - {artist}</i>",
         "player-icons": {
             "default": "󰎆",
-            "chromium": "󰗃"
+            "chromium": "<span foreground='#FF0033'>󰗃</span>"
         },
         "status-icons": {
             "paused": "󰏤"
@@ -170,21 +205,8 @@
         "title-len": 30,
         "interval": 1,
         "dynamic-separator": "\n",
+        "max-length": 45,
         "tooltip-format": "{dynamic}"
-    },
-
-
-    "privacy": {
-        "icon-size": 16,
-        "icon-spacing": 8,
-        "modules": [
-            {
-                "type": "screenshare"
-            },
-            {
-                "type": "audio-in"
-            }
-        ]
     },
 
     "tray": {
@@ -206,12 +228,12 @@
     // HYPRLAND MODULE DEFINES
 
     "hyprland/workspaces": {
-        "format": "{icon}",
+        "format": "{name}",
         "format-icons": {
             "active": "",
             "default": "",
             "special": "",
-            "empty": ""
+            "empty": ""
         },
         "persistent-workspaces": {
             "*": [ 1,2,3,4,5 ]
@@ -238,11 +260,11 @@
         "format": "󰚢",
         "tooltip": true,
         "tooltip-format": "Notifications",
-        "on-click": ""
+        "on-click": "swaync-client -t -sw"
     },
 
     "custom/power": {
-        "format": "󰐥 ",
+        "format": "󰐥",
         "tooltip": true,
         "tooltip-format": "Power Menu",
         "on-click": "rofi -show power_menu -config \"~/.config/rofi/power_menu.rasi\""
