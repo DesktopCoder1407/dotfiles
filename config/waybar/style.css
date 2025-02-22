@@ -2,6 +2,8 @@
 @define-color color-border @color3;
 @define-color color-tooltip alpha(@background, 0.75);
 @define-color color-hover shade(@foreground, 0.25);
+@define-color color-primary @color2;
+@define-color color-active @color1;
 
 * {
     font-family: "FiraCode Nerd Font Propo";
@@ -43,17 +45,17 @@ tooltip label {
 
 /* WORKSPACES */
 #workspaces button {
-    background-color: @color2;
+    background-color: @color-primary;
     color: @foreground;
     padding: 0px 0.75em;
 }
 
 #workspaces button.empty {
-    background-color: shade(@color2, 0.5);
+    background-color: shade(@color-primary, 0.5);
 }
 
 #workspaces button.active {
-    background-color: @color1;
+    background-color: @color-active;
 }
 
 #workspaces button:hover {
@@ -63,6 +65,6 @@ tooltip label {
 /* CLOCK */
 #clock {
     color: @foreground;
-    background-color: @color2;
+    background-color: @color-primary;
     padding: 0px 4px;
 }
