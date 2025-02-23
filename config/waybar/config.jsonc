@@ -4,7 +4,7 @@
 {
     "layer": "top",
     "position": "top",
-    "spacing": 6,
+    "spacing": 4,
     "mode": "dock",
     "reload_style_on_change": true,
 
@@ -70,7 +70,7 @@
     },
 
     "idle_inhibitor": {
-        "format": "{icon} ",
+        "format": "{icon}",
         "format-icons": {
             "activated": "󱙱",
             "deactivated": "󰌿"
@@ -95,14 +95,14 @@
     },
 
     "backlight": {
-        "format": "{icon}  {percent}%",
+        "format": "{icon} {percent}%",
         "format-icons": [ "", "", "", "", "", "", "", "", "" ],
         "tooltip": false
     },
 
     "battery": {
-        "format": "{icon}  {capacity}%",
-        "format-charging": "󰂄  {capacity}%",
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
         "format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
         //"design-capacity": true,
         "interval": 15,

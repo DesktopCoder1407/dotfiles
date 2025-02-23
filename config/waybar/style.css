@@ -83,7 +83,10 @@ tooltip label {
 
 /* SUB ITEMS */
 
-#devices *,
+#devices * {
+    padding: 0 6px;
+}
+
 #network *,
 #tray * {
     padding: 0 2px;
