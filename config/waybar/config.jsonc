@@ -12,17 +12,17 @@
 
     "modules-left": [ "custom/notification", "hyprland/workspaces" ],
     "modules-center": [ "clock" ],
-    "modules-right": [ "group/hardware", "wireplumber", "group/devices", "tray", "custom/power" ],
+    "modules-right": [ "wireplumber", "group/devices", "group/network", "tray" ],
 
     // GROUP: HARDWARE
 
     "group/hardware": {
        "orientation": "inherit",
-       "modules": [ "custom/menu", "cpu", "temperature#cpu", "memory", "temperature#gpu" ],
-       "drawer": {
+       "modules": [ "cpu", "temperature#cpu", "temperature#gpu" ],
+       /*"drawer": {
            "transition-left-to-right": true,
            "click-to-reveal": true
-       }
+       }*/
     },
 
     "custom/menu": {
@@ -31,13 +31,13 @@
     },
 
     "cpu": {
-        "format": "󰻠  {usage}%",
+        "format": "󰻠 {usage}%",
         "interval": 15,
         "tooltip": false
     },
 
     "temperature#cpu": {
-        "format": "󰻠{icon}  {temperatureC}°C",
+        "format": "{temperatureC}°C",
         "format-critical": "󰻠  {temperatureC}°C",
         "format-icons": [ "", "", "", "" ],
         "hwmon-path": "/sys/devices/pci0000:00/0000:00:14.0/i2c-8/8-0051/hwmon/hwmon3/temp1_input",
@@ -66,7 +66,7 @@
 
     "group/devices": {
         "orientation": "inherit",
-        "modules": [ "idle_inhibitor", "privacy", "backlight", "battery" ]
+        "modules": [ "privacy", "backlight", "battery", "idle_inhibitor", "custom/power" ]
     },
 
     "idle_inhibitor": {
@@ -123,7 +123,7 @@
     "network": {
         "format-wifi": "{icon}",
         "format-ethernet":"󰲝",
-        "format-disconnected": "",
+        "format-disconnected": " ",
         "format-icons": [ "󰤯", "󰤟", "󰤢", "󰤢", "󰤨" ],
         "interval": 30,
         "on-click": "rofi -show wifi_menu -config \"~/.config/rofi/wifi_menu.rasi\"",
@@ -137,7 +137,7 @@
         "format-disabled": "󰂲",
         "format-off": "󰂲",
         "format-connected": "󰂱",
-        "format-connected-battery": "󰥉  {device_battery_percentage}%",
+        "format-connected-battery": "󰥉 {device_battery_percentage}%",
         "interval": 15,
         "on-click": "rofi -show bluetooth_menu -config \"~/.config/rofi/bluetooth_menu.rasi\"",
         "tooltip-format": "{num_connections} connected",
