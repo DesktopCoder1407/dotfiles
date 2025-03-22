@@ -1,26 +1,10 @@
-" >>> Plugins
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-"Plugin 'ycm-core/YouCompleteMe'
-Plugin 'preservim/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-
-call vundle#end()
 filetype plugin indent on
 syntax on
-"let g:ycm_enable_semantic_highlighting=1  " Improved syntax highlighting
 
 set autoindent expandtab smartindent shiftwidth=0 tabstop=4  " Automatic indentation, four spaces.
 set cursorline number splitright mouse=n " Visual Display
 set wildmode=longest,list  " Bash-like command completion
 color habamax
-
-" >>> Keymappings
 
 " Movement
 noremap <Up> g<Up>
@@ -35,11 +19,6 @@ vmap <silent> <C-u> :s/\(^[ ]*\)\/\//\1/<CR>
 nmap <silent> <C-k> :.s/^[ ]*/\0\/\//<CR>
 nmap <silent> <C-u> :.s/\(^[ ]*\)\/\//\1/<CR>
 
-" Function Keys
-noremap <F2> :NERDTreeToggle<CR>
-
-" >>> Autocommands
-
 augroup folding
     autocmd BufWinEnter *.c setlocal foldmethod=syntax foldcolumn=2 foldnestmax=2
     nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
@@ -51,13 +30,4 @@ augroup c_functions
     " Keep File Position
     autocmd BufWinLeave *.c mkview!
     autocmd BufWinEnter *.c silent! loadview
-augroup END
-
-augroup NERDTree
-    " Start NERDTree when Vim starts with a directory argument.
-    autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-        \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
-    " Exit Vim if NERDTree is the only window remaining in the only tab.
-    autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
 augroup END
