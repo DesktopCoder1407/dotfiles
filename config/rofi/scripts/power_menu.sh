@@ -1,8 +1,12 @@
 #!/bin/bash
 
-display_entries() {
-    echo -e "󰍁 Lock\n󰤄 Suspend\n󰍃 Logout\n󰜉 Reboot\n󰐥 Shutdown"
-}
+ENTRIES="󰍁 Lock\n󰤄 Suspend\n󰍃 Logout\n󰜉 Reboot\n󰐥 Shutdown"
+rofi_command="rofi -dmenu"
+
+chosen_item=$(echo -e "$ENTRIES" | rofi_command)
+notify-send ${chosen_item}
+
+exit
 
 case $1 in
     *Lock)

@@ -1,13 +1,11 @@
 @import url('../../.cache/wal/colors-waybar.css');
-@define-color color-border @color3;
-@define-color color-tooltip alpha(@background, 0.75);
-@define-color color-hover shade(@color-secondary, 0.35);
 @define-color color-primary @color2;
 @define-color color-secondary @color3;
 @define-color color-accent @color1;
+@define-color color-border @color4;
 
 * {
-    font-family: "FiraCode Nerd Font Propo";
+    font-family: "Noto Sans";
     font-size: 16px;
     min-height: 0;
     padding: 0;
@@ -22,7 +20,7 @@ window#waybar {
 
 /* TOOLTIPS */
 tooltip {
-    background-color: @color-tooltip;
+    background-color: alpha(@background, .75);
     border: solid;
     border-width: 2px;
     border-radius: 10px;
@@ -36,8 +34,10 @@ tooltip label {
 
 /* NOTIFICATION */
 #custom-notification {
+    background-color: @color-primary;
     color: @foreground;
     padding: 0 8px 0 12px;
+    margin-right: 0.25em;
 }
 
 #custom-notification:hover {
@@ -51,22 +51,29 @@ tooltip label {
     padding: 0px 0.75em;
 }
 
+#workspaces button:hover {
+    background-color: alpha(@color-primary, 0.75);
+}
+
 #workspaces button.empty {
     background-color: shade(@color-primary, 0.5);
+}
+
+#workspaces button.empty:hover {
+    background-color: alpha(@color-primary, 0.25);
 }
 
 #workspaces button.active {
     background-color: @color-accent;
 }
 
-#workspaces button:hover {
-    background-color: @color-hover;
+#workspaces button.active:hover {
+    background-color: alpha(@color-accent, 0.75);
 }
 
 /* CLOCK */
 #clock {
     color: @foreground;
-    /*background-color: @color-primary;*/
     padding: 0px 4px;
 }
 
@@ -81,8 +88,7 @@ tooltip label {
     margin: 0 0.25em;
 }
 
-/* SUB ITEMS */
-
+/* GROUP ITEMS */
 #devices * {
     padding: 0 6px;
 }

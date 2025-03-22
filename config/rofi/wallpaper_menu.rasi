@@ -1,0 +1,48 @@
+// Rofi Wallpaper Selector Menu
+// By DesktopCoder1407
+@theme "~/.cache/wal/colors-rofi-dark.rasi"
+
+configuration {
+    show-icons: true;
+    prompt: "Select Wallpaper";
+}
+
+* {
+    background-color: transparent;
+}
+
+window {
+    anchor: north;
+    location: north;
+    y-offset: 2em;
+
+    background-color: DimGray / 70%;
+
+    border-color: @urgent-background;
+    border: 3px;
+    border-radius: 20px;
+
+    children: [ listview ];
+}
+
+listview {
+    columns: 3;
+    spacing: 2px;
+    lines: 3;
+    flow: horizontal;
+}
+
+element {
+    orientation: vertical;
+    padding: -50;
+    children: [ element-icon ];
+}
+
+element.normal.normal,
+element.alternate.normal {
+    background-color: transparent;
+}
+
+element-icon {
+	size: 40% calc(40% / 1.45);
+}
