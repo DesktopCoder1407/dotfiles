@@ -5,76 +5,76 @@
 @define-color color-border @color4;
 
 * {
-    font-family: "Noto Sans";
-    font-size: 16px;
-    min-height: 0;
-    padding: 0;
-    border: none;
-    border-radius: 0px;
-    margin: 0;
+	font-family: "Noto Sans";
+	font-size: 16px;
+	min-height: 0;
+	padding: 0;
+	border: none;
+	border-radius: 0px;
+	margin: 0;
 }
 
 window#waybar {
-    background-color: @background;
+	background-color: @background;
 }
 
 /* TOOLTIPS */
 tooltip {
-    background-color: alpha(@background, .75);
-    border: solid;
-    border-width: 2px;
-    border-radius: 10px;
-    border-color: @color-border;
+	background-color: alpha(@background, .75);
+	border: solid;
+	border-width: 2px;
+	border-radius: 10px;
+	border-color: @color-border;
 }
 
 tooltip label {
-    color: @foreground;
-    margin: -1.5px 3px;
+	color: @foreground;
+	margin: -1.5px 3px;
 }
 
 /* NOTIFICATION */
 #custom-notification {
-    background-color: @color-primary;
-    color: @foreground;
-    padding: 0 8px 0 12px;
-    margin-right: 0.25em;
+	background-color: @color-primary;
+	color: @foreground;
+	padding: 0 8px 0 12px;
+	margin-right: 0.25em;
 }
 
 #custom-notification:hover {
-    background-color: @color-hover;
+	background-color: @color-hover;
 }
 
 /* WORKSPACES */
 #workspaces button {
-    background-color: @color-primary;
-    color: @foreground;
-    padding: 0px 0.75em;
+	background-color: @color-primary;
+	color: @foreground;
+	padding: 0px 0.75em;
 }
 
 #workspaces button:hover {
-    background-color: alpha(@color-primary, 0.75);
+	background-color: alpha(@color-primary, 0.75);
 }
 
 #workspaces button.empty {
-    background-color: shade(@color-primary, 0.5);
+	background-color: shade(@color-primary, 0.5);
 }
 
 #workspaces button.empty:hover {
-    background-color: alpha(@color-primary, 0.25);
+	background-color: alpha(@color-primary, 0.25);
 }
 
 #workspaces button.active {
-    background-color: @color-accent;
+	background-color: @color-accent;
 }
 
 #workspaces button.active:hover {
-    background-color: alpha(@color-accent, 0.75);
+	background-color: alpha(@color-accent, 0.75);
 }
 
 /* CLOCK */
 #clock {
-    color: @foreground;
-    padding: 0px 4px;
+	color: @foreground;
+	padding: 0px 4px;
 }
 
 /* RIGHT ITEMS */
@@ -82,18 +82,18 @@ tooltip label {
 #devices,
 #tray,
 #network {
-    color: @foreground;
-    background-color: @color-primary;
-    padding: 0 0.4em;
-    margin: 0 0.25em;
+	color: @foreground;
+	background-color: @color-primary;
+	padding: 0 0.4em;
+	margin: 0 0.25em;
 }
 
 /* GROUP ITEMS */
 #devices * {
-    padding: 0 6px;
+	padding: 0 6px;
 }
 
 #network *,
 #tray * {
-    padding: 0 2px;
+	padding: 0 2px;
 }

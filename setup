@@ -4,56 +4,56 @@
 DIR=/home/$USER/.dotfiles
 
 setup() {
-    git submodule update --init --recursive
+	git submodule update --init --recursive
 
-    mkdir -p ~/.config
-    for ENTRY in "$DIR/config"/*; do
-        echo -e "[\e[32m.config\e[39m] installing $ENTRY"
-        setup_file $ENTRY ~/.config/${ENTRY##*/}
-    done
+	mkdir -p ~/.config
+	for ENTRY in "$DIR/config"/*; do
+		echo -e "[\e[32m.config\e[39m] installing $ENTRY"
+		setup_file $ENTRY ~/.config/${ENTRY##*/}
+	done
 
-    for ENTRY in "$DIR/home"/*; do
-        echo -e "[\e[32mhome\e[39m] installing $ENTRY"
-        setup_file $ENTRY ~/.${ENTRY##*/}
-    done
+	for ENTRY in "$DIR/home"/*; do
+		echo -e "[\e[32mhome\e[39m] installing $ENTRY"
+		setup_file $ENTRY ~/.${ENTRY##*/}
+	done
 
-    echo -e "\n\e[01;34mFurther Setup Instructions\e[0m:"
-    cat setup_instructions
+	echo -e "\n\e[01;34mFurther Setup Instructions\e[0m:"
+	cat setup_instructions
 }
 
 setup_file() {
-    SOURCE=$1
-    TARGET=$2
+	SOURCE=$1
+	TARGET=$2
 
-    if [ -L $TARGET ]; then
-        echo -e " * \e[31mUnlinking\e[39m: $TARGET"
-        unlink $TARGET || true
-    elif [ -f $TARGET ]; then
-        echo -e " * \e[31mRemoving File\e[39m: $TARGET"
-        rm $TARGET
-    elif [ -e $TARGET ]; then
-        echo -e " * \e[31mDelete\e[39m: $TARGET"
-        rm -rf $TARGET || true
-    fi
+	if [ -L $TARGET ]; then
+		echo -e " * \e[31mUnlinking\e[39m: $TARGET"
+		unlink $TARGET || true
+	elif [ -f $TARGET ]; then
+		echo -e " * \e[31mRemoving File\e[39m: $TARGET"
+		rm $TARGET
+	elif [ -e $TARGET ]; then
+		echo -e " * \e[31mDelete\e[39m: $TARGET"
+		rm -rf $TARGET || true
+	fi
 
-    echo -e " * \e[33mLinking\e[39m: $SOURCE \t->\t $TARGET"
-    ln -s $SOURCE $TARGET
+	echo -e " * \e[33mLinking\e[39m: $SOURCE \t->\t $TARGET"
+	ln -s $SOURCE $TARGET
 }
 
 uninstall() {
-    for ENTRY in "$DIR/config"/*; do
-        echo -e "\e[31mUnlinking\e[39m: $ENTRY"
-        unlink ~/.config/${ENTRY##*/} || true
-    done
+	for ENTRY in "$DIR/config"/*; do
+		echo -e "\e[31mUnlinking\e[39m: $ENTRY"
+		unlink ~/.config/${ENTRY##*/} || true
+	done
 
-    for ENTRY in "$DIR/home"/*; do
-        echo -e "\e[31mUnlinking\e[39m: $ENTRY"
-        unlink ~/.${ENTRY##*/} || true
-    done
+	for ENTRY in "$DIR/home"/*; do
+		echo -e "\e[31mUnlinking\e[39m: $ENTRY"
+		unlink ~/.${ENTRY##*/} || true
+	done
 }
 
 if [[ $# -gt 0 && $1 = "--uninstall" ]]; then
-    uninstall
+	uninstall
 else
-    setup
+	setup
 fi

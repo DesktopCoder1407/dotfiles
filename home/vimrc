@@ -1,9 +1,10 @@
-filetype plugin indent on
+filetype indent plugin on
 syntax on
 
-set autoindent expandtab smartindent shiftwidth=0 tabstop=4  " Automatic indentation, four spaces.
-set cursorline number splitright mouse=n " Visual Display
-set wildmode=longest,list  " Bash-like command completion
+set autoindent smartindent "Automatic indentation set to 8-width tabs following Linux Kernel standards.
+set cursorline number 
+set splitright mouse=n
+set wildmode=longest,list "Bash-like completion
 color habamax
 
 " Movement
@@ -13,21 +14,13 @@ noremap <Down> g<Down>
 noremap g<Down> <Down>
 noremap Y y$
 
-" Create Line Comments
-vmap <silent> <C-k> :s/^[ ]*/\0\/\//<CR>
-vmap <silent> <C-u> :s/\(^[ ]*\)\/\//\1/<CR>
-nmap <silent> <C-k> :.s/^[ ]*/\0\/\//<CR>
-nmap <silent> <C-u> :.s/\(^[ ]*\)\/\//\1/<CR>
-
-augroup folding
-    autocmd BufWinEnter *.c setlocal foldmethod=syntax foldcolumn=2 foldnestmax=2
-    nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-augroup END
+" Single-button Folding
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 
 augroup c_functions
-    " C-Indentation
-    autocmd BufWinEnter *.c setlocal nosmartindent cindent
-    " Keep File Position
-    autocmd BufWinLeave *.c mkview!
-    autocmd BufWinEnter *.c silent! loadview
+	au!
+	autocmd BufWinEnter *.c setlocal cindent
+	" Keep File Position
+	autocmd BufWinLeave *.c mkview!
+	autocmd BufWinEnter *.c silent! loadview
 augroup END
