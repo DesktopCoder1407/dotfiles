@@ -1,5 +1,5 @@
-// vim:syntax=json;foldmethod=syntax:foldlevel=1:foldnestmax=2
-// Developed by DesktopCoder1407
+// vim:syntax=jsonc:foldmethod=syntax:foldlevel=1:foldnestmax=2
+// by DesktopCoder1407
 
 {
 	"layer": "top",
@@ -9,12 +9,12 @@
 	"reload_style_on_change": true,
 
 	// MODULE LAYOUT
-	"modules-left": [ "custom/menu", "hyprland/workspaces" ],
-	"modules-center": [ "clock" ],
-	"modules-right": [ "wireplumber", "network", "bluetooth", "battery", "tray" ],
+	"modules-left": [ "custom/launcher", "custom/spacer", "hyprland/workspaces", "custom/spacer", "hyprland/window" ],
+	"modules-center": [ "custom/notifications", "custom/spacer", "clock", "custom/spacer", "mpris" ],
+	"modules-right": [ "group/applications", "custom/spacer", "group/system", "custom/spacer", "battery", "custom/spacer", "custom/power-menu" ],
 
 	// LEFT MODULES
-	"custom/menu": {
+	"custom/launcher": {
 		"format": "",
 		"tooltip": false
 	},
@@ -35,7 +35,25 @@
 		"sort-by": "id"
 	},
 
+	"hyprland/window": {
+		"format": "{title}",
+		"rewrite": {
+			".*@.*:([~/].*)": "$1",     //Terminal
+			"(.*) - Chromium": "$1",    //Chromium
+			"(.*) - YouTube(.*)": "$1"  //Youtube
+		},
+		"separate-outputs": true,
+		"icon": true,
+		"icon-size": 17,
+		"max-length": 50
+	},
+
 	// CENTER MODULES
+	"custom/notifications": {
+		"format": "1",
+		"tooltip": false
+	},
+
 	"clock": {
 		"format": "{:%H:%M - %a, %d %b %Y}",
 		"tooltip-format": "<tt>{calendar}</tt>",
@@ -55,18 +73,6 @@
 		}
 	},
 
-	// RIGHT MODULES
-	"wireplumber": {
-		"format": "{icon} {volume}%",
-		"format-muted": "󰝟 {volume}%",
-		"format-icons": [ "󰕿", "󰖀", "󰕾" ],
-		"scroll-step": 5,
-		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-		"max-volume": 100,
-		"tooltip-format": "{node_name}\nVolume: {volume}%"
-	},
-
-	// UNUSED MODULES
 	"mpris": {
 	//"format": "{title} - {artist} {player_icon}",
 	"format": "{dynamic}  {player_icon} ",
@@ -91,34 +97,53 @@
 	"tooltip-format": "{dynamic}"
 	},
 
-	"hyprland/window": {
-		"format": "{title}",
-		"rewrite": {
-			".*@.*:([~/].*)": "$1",     //Terminal
-			"(.*) - Chromium": "$1",    //Chromium
-			"(.*) - YouTube(.*)": "$1"  //Youtube
-		},
-		"separate-outputs": true,
-		"icon": true,
-		"icon-size": 17,
-		"max-length": 50
+	// RIGHT MODULES
+	"group/applications": {
+		"orientation": "inherit",
+		"modules": [ "custom/header", "tray", "idle_inhibitor" ],
+		"drawer": {
+			"click-to-reveal": true
+		}
 	},
 
-	"custom/power": {
+	"group/system": {
+		"modules": [ "wireplumber" ]
+	},
+
+	"custom/power-menu": {
 		"format": "󰐥",
 		"tooltip": true,
 		"tooltip-format": "Power Menu",
 		"on-click": "exec ~/.config/rofi/scripts/power_menu.sh"
 	},
 
-	// GROUP: DEVICES
-	"group/devices": {
-		"orientation": "inherit",
-		"modules": [ "privacy", "backlight", "battery", "idle_inhibitor", "custom/power" ]
+	"wireplumber": {
+		"format": "{icon} {volume}%",
+		"format-muted": "󰝟 {volume}%",
+		"format-icons": [ "󰕿", "󰖀", "󰕾" ],
+		"scroll-step": 5,
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		"max-volume": 100,
+		"tooltip-format": "{node_name}\nVolume: {volume}%"
 	},
 
+	// GROUPED MODULES
+
+	// SPACERS
+	"custom/spacer": {
+		"format": " ",
+		"tooltip": false
+	},
+	
+	"custom/header": {
+		"format": "THIS IS A FORMAT",
+		"tooltip": false
+	},
+
+	// UNUSED MODULES
+
 	"privacy": {
-		"icon-size": 16,
+		"icon-size": 17,
 		"icon-spacing": 8,
 		"modules": [
 			{
@@ -128,12 +153,6 @@
 				"type": "audio-in"
 			}
 		]
-	},
-
-	"backlight": {
-		"format": "{icon} {percent}%",
-		"format-icons": [ "", "", "", "", "", "", "", "", "" ],
-		"tooltip": false
 	},
 
 	"battery": {
@@ -147,12 +166,6 @@
 		"warning": 30,
 		"critical": 10
 	}
-	},
-
-	// GROUP: NETWORK
-	"group/network": {
-		"orientation": "inherit",
-		"modules": [ "network", "bluetooth" ]
 	},
 
 	"network": {
@@ -180,12 +193,6 @@
 		"tooltip-format-connected": "{num_connections} connected:\n{device_enumerate}",
 		"tooltip-format-enumerate-connected": "{device_alias}",
 		"tooltip-format-enumerate-connected-battery": "{device_alias}: 󰥉 {device_battery_percentage}%"
-	},
-
-	// GROUP: TOOLS
-	"group/tools": {
-		"orientation": "inherit",
-		"modules": [ "idle_inhibitor" ]
 	},
 
 	"idle_inhibitor": {
