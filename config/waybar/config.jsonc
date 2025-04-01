@@ -76,10 +76,10 @@
 
 	"battery": {
 		"format": "{icon} {capacity}%",
-		"format-chargin": " {capacity}%",
+		"format-charging": " {capacity}%",
 		"format-icons": ["", "", "", "", "" ],
 		"tooltip-format": "{timeTo}\nBattery Health: {health}%"
-		//"design-capacity": true,
+		//"design-capacity": true
 	},
 
 	"wireplumber": {
