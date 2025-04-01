@@ -52,7 +52,7 @@ tooltip label {
 /* RIGHT INFO */
 #tray,
 #bluetooth,
-#batttery,
+#battery,
 #network,
 #wireplumber {
 	color: @foreground;
