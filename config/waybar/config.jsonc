@@ -76,9 +76,9 @@
 
 	"battery": {
 		"format": "{icon} {capacity}%",
-		"format-plugged": " {capacity}%",
+		"format-chargin": " {capacity}%",
 		"format-icons": ["", "", "", "", "" ],
-		"tooltip-format": "{timeTo}\nBattery Health: {health}"
+		"tooltip-format": "{timeTo}\nBattery Health: {health}%"
 		//"design-capacity": true,
 	},
 
