@@ -1,11 +1,10 @@
+/* by DesktopCoder1407 */
 @import url('../../.cache/wal/colors-waybar.css');
-@define-color color-primary @color2;
-@define-color color-secondary @color3;
-@define-color color-accent @color1;
-@define-color color-border @color4;
+@define-color foreground #b9b9b9;
+@define-color background #181818;
 
 * {
-	font-family: "Noto Sans";
+	font-family: "FiraCode Nerd Font Propo";
 	font-size: 16px;
 	min-height: 0;
 	padding: 0;
@@ -23,8 +22,8 @@ tooltip {
 	background-color: alpha(@background, .75);
 	border: solid;
 	border-width: 2px;
-	border-radius: 10px;
-	border-color: @color-border;
+	border-radius: 8px;
+	border-color: @color2;
 }
 
 tooltip label {
@@ -32,68 +31,38 @@ tooltip label {
 	margin: -1.5px 3px;
 }
 
-/* NOTIFICATION */
-#custom-notification {
-	background-color: @color-primary;
-	color: @foreground;
-	padding: 0 8px 0 12px;
-	margin-right: 0.25em;
-}
-
-#custom-notification:hover {
-	background-color: @color-hover;
-}
-
 /* WORKSPACES */
 #workspaces button {
-	background-color: @color-primary;
+	background-color: alpha(@color1, 0.5);
 	color: @foreground;
-	padding: 0px 0.75em;
-}
-
-#workspaces button:hover {
-	background-color: alpha(@color-primary, 0.75);
-}
-
-#workspaces button.empty {
-	background-color: shade(@color-primary, 0.5);
-}
-
-#workspaces button.empty:hover {
-	background-color: alpha(@color-primary, 0.25);
+	border-radius: 25;
+	padding: 0px 0.4em;
+	margin: 0px 1px;
 }
 
 #workspaces button.active {
-	background-color: @color-accent;
+	background-color: @color1;
 }
 
-#workspaces button.active:hover {
-	background-color: alpha(@color-accent, 0.75);
-}
-
-/* CLOCK */
-#clock {
+/* AUDIO PREVIEW */
+#mpris {
 	color: @foreground;
-	padding: 0px 4px;
 }
 
-/* RIGHT ITEMS */
-#wireplumber,
-#devices,
+/* RIGHT INFO */
 #tray,
-#network {
+#bluetooth,
+#batttery,
+#network,
+#wireplumber {
 	color: @foreground;
-	background-color: @color-primary;
+	background-color: @color1;
+	border-radius: 4px;
 	padding: 0 0.4em;
 	margin: 0 0.25em;
 }
 
-/* GROUP ITEMS */
-#devices * {
-	padding: 0 6px;
-}
-
-#network *,
-#tray * {
-	padding: 0 2px;
+#clock {
+	color: @foreground;
+	padding: 0px 1em;
 }

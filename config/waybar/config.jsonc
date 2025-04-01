@@ -8,54 +8,92 @@
 	"mode": "dock",
 	"reload_style_on_change": true,
 
-	// MODULE LAYOUT
-	"modules-left": [ "custom/launcher", "custom/spacer", "hyprland/workspaces", "custom/spacer", "hyprland/window" ],
-	"modules-center": [ "custom/notifications", "custom/spacer", "clock", "custom/spacer", "mpris" ],
-	"modules-right": [ "group/applications", "custom/spacer", "group/system", "custom/spacer", "battery", "custom/spacer", "custom/power-menu" ],
+	"modules-left": [ "hyprland/workspaces" ],
+	"modules-center": [ "mpris" ],
+	"modules-right": [ "tray", "bluetooth", "network", "battery", "wireplumber", "clock" ],
 
 	// LEFT MODULES
-	"custom/launcher": {
-		"format": "",
-		"tooltip": false
-	},
-
 	"hyprland/workspaces": {
-		"format": "{name}",
-		"format-icons": {
-			"active": "",
-			"default": "",
-			"special": "",
-			"empty": ""
+		"format": "{id}",
+		/*"format-icons": {
+			"active": "",
+			"default": "",
+			"empty": ""
 		},
 		"persistent-workspaces": {
-			"*": [ 1,2,3,4,5 ]
-		},
-		"show-special": true,
-		"special-visible-only": true,
+			"*": [ 1,2,3,4,5,6,7 ]
+		},*/
 		"sort-by": "id"
 	},
-
-	"hyprland/window": {
-		"format": "{title}",
-		"rewrite": {
-			".*@.*:([~/].*)": "$1",     //Terminal
-			"(.*) - Chromium": "$1",    //Chromium
-			"(.*) - YouTube(.*)": "$1"  //Youtube
+	
+	// CENTER MODULES
+	"mpris": {
+		"format": "{player_icon} {title} - {artist}",
+		"format-paused": "{player_icon} <i>{title} - {artist}</i>",
+		"player-icons": {
+			"default": "󰎆",
+			"chromium": "󰗃"
 		},
-		"separate-outputs": true,
-		"icon": true,
-		"icon-size": 17,
-		"max-length": 50
+		"dynamic-separator": "\n",
+		"on-click-middle": "",
+		"on-click-right": "",
+		"max-length": 60,
+		"title-len": 40,
+		"tooltip-format": "{dynamic}"
 	},
 
-	// CENTER MODULES
-	"custom/notifications": {
-		"format": "1",
-		"tooltip": false
+	// RIGHT MODULES
+	"tray": {
+		"icon-size": 16,
+		"spacing": 2
+	},
+
+	"bluetooth": {
+		"format": "󰂯",
+		"format-disabled": "󰂲",
+		"format-off": "󰂲",
+		"format-connected": "󰂱",
+		"format-connected-battery": "󰥉 {device_battery_percentage}%",
+		"interval": 15,
+		"on-click": "alacritty --class \"Popup\" -e bluetui",
+		"tooltip-format": "{num_connections} connected",
+		"tooltip-format-off": "Bluetooth Off",
+		"tooltip-format-connected": "{num_connections} connected:\n{device_enumerate}",
+		"tooltip-format-enumerate-connected": "{device_alias}",
+		"tooltip-format-enumerate-connected-battery": "{device_alias}: 󰥉 {device_battery_percentage}%"
+	},
+
+	"network": {
+		"format-wifi": "{icon} {essid}",
+		"format-ethernet":"",
+		"format-disconnected": "",
+		"format-icons": [ "󰤯", "󰤟", "󰤢", "󰤢", "󰤨" ],
+		"interval": 30,
+		"tooltip-format-disconnected": "Not Connected",
+		"tooltip-format-wifi": "Connected to {essid} - {signalStrength}%",
+		"tooltip-format-ethernet": "Connected to LAN"
+	},
+
+	"battery": {
+		"format": "{icon} {capacity}%",
+		"format-plugged": " {capacity}%",
+		"format-icons": ["", "", "", "", "" ],
+		"tooltip-format": "{timeTo}\nBattery Health: {health}"
+		//"design-capacity": true,
+	},
+
+	"wireplumber": {
+		"format": "{icon} {volume}%",
+		"format-muted": "󰝟 {volume}%",
+		"format-icons": [ "󰕿", "󰖀", "󰕾" ],
+		"scroll-step": 5,
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		"max-volume": 100,
+		"tooltip-format": "{node_name}\nVolume: {volume}%"
 	},
 
 	"clock": {
-		"format": "{:%H:%M - %a, %d %b %Y}",
+		"format": "{:%a, %d %b - %H:%M}",
 		"tooltip-format": "<tt>{calendar}</tt>",
 		"calendar": {
 			"format": {
@@ -71,145 +109,5 @@
 			"on-scroll-up": "shift_down",
 			"on-scroll-down": "shift_up"
 		}
-	},
-
-	"mpris": {
-	//"format": "{title} - {artist} {player_icon}",
-	"format": "{dynamic}  {player_icon} ",
-	"format-paused": "{dynamic}  {status_icon}",
-	"player-icons": {
-		"default": "󰝚"
-	},
-	"status-icons": {
-		"paused": "󰏤"
-	},
-	"ignored-players": [
-		"chromium"
-	],
-	"dynamic-order": ["title", "artist", "album" ],
-	"on-click-middle": "",
-	"on-click-right": "",
-	"title-len": 25,
-	"interval": 0.01,
-	"dynamic-len": 38,
-	"max-length": 40,
-	//"min-length": 40,
-	"tooltip-format": "{dynamic}"
-	},
-
-	// RIGHT MODULES
-	"group/applications": {
-		"orientation": "inherit",
-		"modules": [ "custom/header", "tray", "idle_inhibitor" ],
-		"drawer": {
-			"click-to-reveal": true
-		}
-	},
-
-	"group/system": {
-		"modules": [ "wireplumber" ]
-	},
-
-	"custom/power-menu": {
-		"format": "󰐥",
-		"tooltip": true,
-		"tooltip-format": "Power Menu",
-		"on-click": "exec ~/.config/rofi/scripts/power_menu.sh"
-	},
-
-	"wireplumber": {
-		"format": "{icon} {volume}%",
-		"format-muted": "󰝟 {volume}%",
-		"format-icons": [ "󰕿", "󰖀", "󰕾" ],
-		"scroll-step": 5,
-		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-		"max-volume": 100,
-		"tooltip-format": "{node_name}\nVolume: {volume}%"
-	},
-
-	// GROUPED MODULES
-
-	// SPACERS
-	"custom/spacer": {
-		"format": " ",
-		"tooltip": false
-	},
-	
-	"custom/header": {
-		"format": "THIS IS A FORMAT",
-		"tooltip": false
-	},
-
-	// UNUSED MODULES
-
-	"privacy": {
-		"icon-size": 17,
-		"icon-spacing": 8,
-		"modules": [
-			{
-				"type": "screenshare"
-			},
-			{
-				"type": "audio-in"
-			}
-		]
-	},
-
-	"battery": {
-		"format": "{capacity}% {icon}",
-		"format-charging": "{capacity}% 󰂄",
-		"format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
-	//"design-capacity": true,
-	"interval": 15,
-	"states": {
-		"good": 95,
-		"warning": 30,
-		"critical": 10
-	}
-	},
-
-	"network": {
-		"format-wifi": "{icon}",
-		"format-ethernet":"󰲝",
-		"format-disconnected": " ",
-		"format-icons": [ "󰤯", "󰤟", "󰤢", "󰤢", "󰤨" ],
-		"interval": 30,
-		"on-click": "rofi -show wifi_menu -config \"~/.config/rofi/wifi_menu.rasi\"",
-		"tooltip-format-disconnected": "Not Connected",
-		"tooltip-format-wifi": "{essid} - {signalStrength}% {icon} ",
-		"tooltip-format-ethernet": "{bandwidthTotalBits} 󰲝 "
-	},
-
-	"bluetooth": {
-		"format": "󰂯",
-		"format-disabled": "󰂲",
-		"format-off": "󰂲",
-		"format-connected": "󰂱",
-		"format-connected-battery": "󰥉 {device_battery_percentage}%",
-		"interval": 15,
-		"on-click": "rofi -show bluetooth_menu -config \"~/.config/rofi/bluetooth_menu.rasi\"",
-		"tooltip-format": "{num_connections} connected",
-		"tooltip-format-off": "Bluetooth Off",
-		"tooltip-format-connected": "{num_connections} connected:\n{device_enumerate}",
-		"tooltip-format-enumerate-connected": "{device_alias}",
-		"tooltip-format-enumerate-connected-battery": "{device_alias}: 󰥉 {device_battery_percentage}%"
-	},
-
-	"idle_inhibitor": {
-		"format": "{icon}",
-		"format-icons": {
-			"activated": "󱙱 ",
-			"deactivated": "󰌾 "
-		},
-		"start-activated": false,
-		"tooltip": true,
-		"tooltip-format-activated": "Idling Disabled",
-		"tooltip-format-deactivated": "Idling Enabled"
-	},
-
-	"tray": {
-		"icon-size": 17,
-	//"show-passive-items": false,
-	"spacing": 2
 	}
 } 
