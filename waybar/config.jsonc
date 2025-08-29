@@ -1,0 +1,276 @@
+// Waybar Config
+// by DesktopCoder1407
+// vim:syntax=jsonc:tabstop=4:shiftwidth=4
+
+{
+	"layer": "top",
+	"position": "top",
+	"height": 40,
+	"margin": 0,
+	"spacing": 0,
+
+	"modules-left": [
+		"hyprland/workspaces"
+	],
+
+	"hyprland/workspaces": {
+		"active-only": false,
+		"hide-active": false,
+		"all-outputs": true,
+		"window-rewrite": {
+			"class<firefox>": "",
+			"class<Alacritty>": "",
+			"class<steam>": "",
+			"class<steam_app.*>": "",
+			"class<pcmanfm.*>": "",
+			"class<libreoffice.*>": "",
+			"class<discord>": ""
+		},
+		"window-rewrite-default": "",
+		"format": "{name}| {windows}",
+		"show-special": true
+	},
+
+	"modules-center": [
+		"hyprland/window"
+	],
+
+	"hyprland/window": {
+		"format": "{title}",
+		"rewrite": {
+			".*:(.*)": "Alacritty | $1",
+			"(.*) — Mozilla Firefox": "$1",
+			"^ \\| $": ""
+		},
+		"tooltip-format": "Class: {class}\nTitle: {title}",
+		"separate-outputs": true,
+		"swap-icon-label": false
+	},
+
+	"modules-right": [
+		"group/hardware",
+		"custom/left-arrw",
+		"group/peripherials",
+		"custom/dot-alt",
+		"clock"
+	],
+
+	"group/hardware": {
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-duration": 750,
+			"children-class": "hardware-child",
+			"click-to-reveal": true
+		},
+		"modules": [
+			"custom/weather",
+			"custom/dot",
+			"custom/cpuinfo",
+			"custom/dot",
+			"custom/gpuinfo",
+			"custom/dot",
+			"memory",
+			"custom/dot",
+			"disk"
+		]
+	},
+
+	"custom/weather": {
+		"exec": "~/.config/waybar/scripts/get_weather.sh",
+		"return-type": "json",
+		"format": "{} ",
+		"interval": 900
+	},
+
+	"custom/cpuinfo": {
+		"exec": " ~/.config/waybar/scripts/cpuinfo.sh",
+		"return-type": "json",
+		"format": "{}  ",
+		"interval": 5,
+		"max-length": 9
+	},
+
+	"custom/gpuinfo": {
+		"exec": " ~/.config/waybar/scripts/gpuinfo.sh",
+		"return-type": "json",
+		"format": "{} 󰢮 ",
+		"interval": 5,
+		"max-length": 9
+	},
+
+	"memory": {
+		"format": "{used:0.1f}GB  ",
+		"interval": 60,
+		"max-length": 8,
+		"tooltip-format": "MEM: {used:0.1f}GB/{total:0.1f}GB\nSWP: {swapUsed}GB/{swapTotal}GB"
+	},
+
+	"disk": {
+		"format": "{percentage_used}% 󰋊",
+		"interval": 60,
+		"max-length": 6
+	},
+
+	"group/peripherials": {
+		"orientation": "horizontal",
+		"modules": [
+			"group/network",
+			"bluetooth",
+			"battery",
+			"group/audio"
+		]
+	},
+
+	"group/network": {
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-duration": 750,
+			"children-class": "network-child",
+			"click-to-reveal": true
+		},
+		"modules": [
+			"network",
+			"network#name",
+			"custom/dot",
+			"network#rate",
+			"custom/dot-alt"
+		]
+	},
+
+	"network": {
+		"format-wifi": "󰖩 ",
+		"format-ethernet": "󰌗 ",
+		"format-disconnected": " ",
+		"interval": 60,
+		"tooltip-format-wifi": "Connected to {essid} - {signalStrength}%",
+		"tooltip-format-ethernet": "Connected to LAN\n  {ipaddr}\nConnects via\n  {gwaddr}",
+	"tooltip-format-disconnected": "Disconnected - No Internet"/*,
+	"on-click": "rofi -e \"Please make a WIFI Menu\""*/
+	},
+
+	"network#name": {
+		"format": "{essid}",
+		"tooltip": false,
+		"interval": 60
+	},
+
+	"network#rate": {
+		"format": "{bandwidthUpBits:>3} {bandwidthDownBits:>3}",
+		"tooltip": false,
+		"interval": 1
+	},
+
+	"bluetooth": {
+		"format": "",
+		"format-icons": ["󰤾", "󰥀", "󰥂", "󰥄", "󰥈"],
+		"format-disabled": "󰂲",
+		"format-off": "󰂲",
+		"format-on": "󰂯",
+		"format-connected": "󰂱",
+		"format-connected-battery": "{icon}",
+		"interval": 15,
+		"on-click": "blueman-manager",
+		"tooltip-format": "Bluetooth {status}",
+		"tooltip-format-connected": "{num_connections} connected:\n{device_enumerate}",
+		"tooltip-format-enumerate-connected": "{device_alias}",
+		"tooltip-format-enumerate-connected-battery": "{device_alias}: 󰥉 {device_battery_percentage}%"
+	},
+
+	"battery": {
+		"format": "{icon} {capacity}",
+		"format-charging": " {capacity}",
+		"format-icons": ["", "", "", "", "" ],
+		"tooltip-format": "{timeTo}\nBattery Health: {health}%"
+	//"design-capacity": true
+	},
+
+	"group/audio": {
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-duration": 750,
+			"children-class": "audio-child",
+			"click-to-reveal": true
+		},
+		"modules": [
+			"wireplumber",
+			"wireplumber#text",
+			"custom/dot",
+			"wireplumber#mic",
+			"wireplumber#mic_text"
+		]
+	},
+
+	"wireplumber": {
+		"format": "{icon}",
+		"format-muted": "󰝟",
+		"format-icons": [ "󰸈", "󰕿", "󰖀", "󰕾" ],
+		"scroll-step": 5,
+		"tooltip-format": "{node_name}\n  Volume: {volume}%\n{source_desc}\n  Input Volume: {source_volume}%"
+	},
+
+	"wireplumber#text": {
+		"format": "{volume}%",
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		"scroll-step": 5,
+		"tooltip-format": "{node_name}\n  Volume: {volume}%"
+	},
+
+	"wireplumber#mic": {
+		"node-type": "Audio/Source",
+		"format": "󰍬",
+		"format-muted": "󰍭",
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+		"tooltip-format": "{node_name}\n  Input Volume: {volume}%"
+	},
+
+	"wireplumber#mic_text": {
+		"node-type": "Audio/Source",
+		"format": "{volume}%",
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+		"tooltip-format": "{node_name}\nInput Volume: {volume}%"
+	},
+
+	"clock": {
+		"format": "   {:%H:%M | %m-%d-%y}",
+		"format-alt": "   {:%a, %d %b, %Y}",
+		"tooltip-format": "<tt>{calendar}</tt>",
+		"calendar": {
+			"mode": "month",
+			"mode-mon-col": 3,
+			"on-scroll": 1,
+			"on-click-right": "mode",
+			"format": {
+				"months": "<span color='#ffead3'><b>{}</b></span>",
+				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+				"today": "<span color='#5e5e5e'><b>{}</b></span>"
+			}
+		},
+		"actions": {
+			"on-click-right": "mode",
+			"on-click-middle": "shift_reset",
+			"on-scroll-up": "shift_down",
+			"on-scroll-down": "shift_up"
+		}
+	},
+
+	"custom/dot": {  // CUSTOM MODULES
+		"format": " • ",
+		"tooltip": false
+	},
+
+	"custom/dot-alt": {
+		"format": " • ",
+		"tooltip": false
+	},
+
+	"custom/left-arrw": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/theme-switcher": {
+		"format": "󰬁󰫵󰫲󱎥󰫲󱎤",
+		"tooltip-format": "Switch Themes",
+		"on-click": "~/.config/hypr/scripts/themeswitcher.sh"
+	}
+}
