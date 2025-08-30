@@ -38,7 +38,7 @@
 	"hyprland/window": {
 		"format": "{title}",
 		"rewrite": {
-			".*:(.*)": "Alacritty | $1",
+			".*@.*:(.*)": "Alacritty | $1",
 			"(.*) — Mozilla Firefox": "$1",
 			"^ \\| $": ""
 		},
