@@ -13,6 +13,20 @@
 		"hyprland/workspaces"
 	],
 
+	"modules-center": [
+		"hyprland/window"
+	],
+
+	"modules-right": [
+		"group/hardware",
+		"custom/left-arrw",
+		"group/peripherials",
+		"custom/dot-alt",
+		"clock",
+		"custom/dot-alt",
+		"custom/notification"
+	],
+
 	"hyprland/workspaces": {
 		"active-only": false,
 		"hide-active": false,
@@ -31,10 +45,6 @@
 		"show-special": true
 	},
 
-	"modules-center": [
-		"hyprland/window"
-	],
-
 	"hyprland/window": {
 		"format": "{title}",
 		"rewrite": {
@@ -46,14 +56,6 @@
 		"separate-outputs": true,
 		"swap-icon-label": false
 	},
-
-	"modules-right": [
-		"group/hardware",
-		"custom/left-arrw",
-		"group/peripherials",
-		"custom/dot-alt",
-		"clock"
-	],
 
 	"group/hardware": {
 		"orientation": "horizontal",
@@ -144,8 +146,7 @@
 		"interval": 60,
 		"tooltip-format-wifi": "Connected to {essid} - {signalStrength}%",
 		"tooltip-format-ethernet": "Connected to LAN\n  {ipaddr}\nConnects via\n  {gwaddr}",
-	"tooltip-format-disconnected": "Disconnected - No Internet"/*,
-	"on-click": "rofi -e \"Please make a WIFI Menu\""*/
+		"tooltip-format-disconnected": "Disconnected - No Internet"
 	},
 
 	"network#name": {
@@ -253,7 +254,26 @@
 		}
 	},
 
-	"custom/dot": {  // CUSTOM MODULES
+	"custom/notification": {
+		"tooltip": true,
+		"format": "{icon}",
+		"format-icons": {
+			"notification": "<span foreground='red'><sup></sup></span>",
+			"none": "",
+			"dnd-notification": "<span foreground='red'><sup></sup></span>",
+			"dnd-none": "",
+			"inhibited-notification": "<span foreground='red'><sup></sup></span>",
+			"inhibited-none": "",
+			"dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+			"dnd-inhibited-none": ""
+		},
+		"return-type": "json",
+		"exec": "swaync-client -swb",
+		"on-click": "swaync-client -t -sw",
+		"on-click-right": "swaync-client -d -sw"
+	},
+
+	"custom/dot": {
 		"format": " • ",
 		"tooltip": false
 	},
@@ -266,11 +286,5 @@
 	"custom/left-arrw": {
 		"format": "",
 		"tooltip": false
-	},
-
-	"custom/theme-switcher": {
-		"format": "󰬁󰫵󰫲󱎥󰫲󱎤",
-		"tooltip-format": "Switch Themes",
-		"on-click": "~/.config/hypr/scripts/themeswitcher.sh"
 	}
 }
