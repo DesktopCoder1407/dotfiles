@@ -18,6 +18,9 @@ noremap Y y$
 " Single-button Folding
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 
+nnoremap <F4> s<c-r>=nr2char(char2nr('<c-r>"') + 1)<cr><esc>
+nnoremap <S-F4> s<c-r>=nr2char(char2nr('<c-r>"') - 1)<cr><esc>
+
 augroup c_functions
 	au!
 	autocmd BufWinEnter *.c setlocal cindent
