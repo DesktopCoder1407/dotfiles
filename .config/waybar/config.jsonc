@@ -118,7 +118,7 @@
 		"modules": [
 			"group/network",
 			"bluetooth",
-			"battery",
+			"group/battery",
 			"group/audio"
 		]
 	},
@@ -151,8 +151,10 @@
 
 	"network#name": {
 		"format": "{essid}",
-		"tooltip": false,
-		"interval": 60
+		"interval": 60,
+		"tooltip-format-wifi": "Connected to {essid} - {signalStrength}%",
+		"tooltip-format-ethernet": "Connected to LAN\n  {ipaddr}\nConnects via\n  {gwaddr}",
+		"tooltip-format-disconnected": "Disconnected - No Internet"
 	},
 
 	"network#rate": {
@@ -177,12 +179,33 @@
 		"tooltip-format-enumerate-connected-battery": "{device_alias}: 󰥉 {device_battery_percentage}%"
 	},
 
+	"group/battery": {
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-duration": 750,
+			"children-class": "battery-child",
+			"click-to-reveal": false
+		},
+		"modules": [
+			"battery",
+			"battery#text"
+		]
+	},
+
 	"battery": {
-		"format": "{icon} {capacity}",
-		"format-charging": " {capacity}",
-		"format-icons": ["", "", "", "", "" ],
-		"tooltip-format": "{timeTo}\nBattery Health: {health}%"
-	//"design-capacity": true
+		"format": "{icon}",
+		"format-charging": "{icon}󱐋",
+		"format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
+		"interval": 5,
+		"tooltip-format": "{timeTo} - {capacity}%\nBattery Health: {health}%",
+		"design-capacity": true
+	},
+
+	"battery#text": {
+		"format": "{capacity}%",
+		"interval": 5,
+		"tooltip-format": "{timeTo} - {capacity}%\nBattery Health: {health}%",
+		"design-capacity": true
 	},
 
 	"group/audio": {
