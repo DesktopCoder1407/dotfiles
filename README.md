@@ -11,3 +11,11 @@
 `pipewire-pulse` - Audio Support - Pulse
 `pipewire-jack` - Audio Support - Jack
 `pipewire-alsa` - Audio Support - Alsa
+
+# Boot Packages:
+`base`
+`linux`
+`linux-firmware`
+`sudo`
+`git`
+`openssh`
