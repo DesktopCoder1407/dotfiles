@@ -13,4 +13,4 @@ if [ -z "$temp" ]; then
 fi
 
 # Print cpu info (json)
-echo "{\"text\":\" ${temp}\", \"tooltip\":\"${model}\n  Temperature: ${temp}\n  Utilization: ${utilization}%\"}"
+echo "{\"text\":\"${temp}\", \"tooltip\":\"${model}\n  Temperature: ${temp}\n  Utilization: ${utilization}%\"}"

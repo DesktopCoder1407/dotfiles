@@ -10,4 +10,4 @@ if [ -z "$temp" ]; then
 fi
 
 # Print gpu info (json)
-echo "{\"text\":\" ${temp}\", \"tooltip\":\"${name}\n  Temperature: ${temp}\"}"
+echo "{\"text\":\"${temp}\", \"tooltip\":\"${name}\n  Temperature: ${temp}\"}"

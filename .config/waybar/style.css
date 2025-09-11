@@ -1,401 +1,110 @@
-@define-color bg #1d2129;
-@define-color container #2e3440;
+/* Waybar Style
+ * by DesktopCoder1407
+ * vim:syntax=scss:tabstop=4:shiftwidth=4
+ */
 
-@define-color fg #d8dee9;
-@define-color fg-1 #ffffff;
+/* Colors */
+@define-color background #2E3440;
+@define-color background-alt #3B4252;
+@define-color foreground #D8DEE9;
+@define-color foreground-alt #ECEFF4;
+@define-color accent-primary #88C0D0;
+@define-color accent-primary-alt #8FBCBB;
+@define-color accent-secondary #81A1C1;
+@define-color accent-tertiary #5E81AC;
+@define-color accent-urgent #BF616A;
 
-@define-color arch #a9cef5;
-@define-color memory #7ba3d4;
-@define-color themes #e0afd7;
-@define-color weather #c7eda8;
-
-@define-color workspace #596378;
-@define-color workspace-active #88c0d0;
-
-@define-color slider #393b34;
-@define-color slider-highlight #ebcb8b;
-@define-color calender #a4dedd;
-@define-color clock #c7eda8;
-@define-color power #ed7b86;
-
-@define-color logout #ebcb8b;
-@define-color reboot #e09c87;
-
-* {
-    border: none;
-    font-family: "JetBrainsMono Nerd Font";
-    font-size: 13px;
-    font-weight: 800;
-    margin-top: -3px;
-    margin-bottom: -3px;
-}
-
+/* Full-bar CSS */
 window#waybar {
-    background-color: @transparent;
-    border-radius: 0px;
-}
-window#waybar > box {
-    border-radius: 0px; 
-    border: 0.3px solid @outline; 
-    margin: 0px 0px 8px 0px;
-    background-color:  alpha(@background, 0.98); 
-    box-shadow: 2px 2px 3px 1px #000000; 
-}
-
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
-#waybar.horizontal {
-    padding-left: 0px;
-    padding-right: 0px;
+	background-color: @background;
+	color: @foreground;
+	border: none;
+	font-family: "FiraCode Nerd Font Propo";
+	font-size: 12px;
+	font-weight: bold;
 }
 
 tooltip {
-    background: @background;
-    color: @primary;
-    border-radius: 5px;
-    border: 1px solid rgba(100, 114, 125, 0.5);
-    padding: 5px 10px;
-    margin: 0;
+	background-color: alpha(@background-alt, 0.5);
+	border: 2px solid @accent-secondary;
+	color: @foreground-alt;
+	font-weight: bold;
 }
 
+.modules-left {
+	padding-left: 4px;
+}
 
-/* Workspace style */
+.modules-right {
+	padding-right: 10px;
+}
 
-#workspaces label {
-    font-size: 15px;
-    margin-left: 1px;
-    margin-right: 1px;
+/* Custom Accents */
+
+#custom-dot {
+	color: @accent-primary;
+	padding: 0 4px;
+}
+
+#custom-dot-alt {
+	color: @accent-primary-alt;
+	padding: 0 4px;
+}
+
+#custom-left-arrw {
+	color: @accent-primary-alt;
+	font-size: 24px;
+	padding: 0 4px;
+}
+
+/* Workspaces */
+button:hover {
+	background: none;
+	box-shadow: none;
+	text-shadow: none;
 }
 
 #workspaces button {
-    color: @workspace;
-    background-color: transparent;
-    border-radius: 10px;
-    padding-left: 7px;
-    padding-right: 7px;
-    animation: ws_normal 20s ease-in-out 1;
+	background-color: @background-alt;
+	color: @foreground;
+	border: 2px solid @accent-tertiary;
+	border-radius: 3px;
+	margin: 5px 2px;
+	padding: 0 9px;
+}
+
+#workspaces button.visible {
+	background-color: @accent-tertiary;
 }
 
 #workspaces button.active {
-    color: @workspace-active;
-    margin-left: 2px;
-    padding-left: 7px;
-    padding-right: 7px;
-    margin-right: 2px;
-    animation: ws_active 20s ease-in-out 1;
-    transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
+	background-color: @accent-primary;
+	color: @background-alt;
 }
 
 #workspaces button.urgent {
-    background-color: @red;
+	background-color: @accent-urgent;
 }
 
-#taskbar {
-
+#workspaces button:hover {
+	background-color: @accent-tertiary;
+	color: @foreground-alt;
+	border-color: @accent-primary-alt;
 }
 
-box#window {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-family: jura;
-    color: @workspace-active;
-}
-
-
-/* Music controller style */
-
-box#music-controller {
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-top: 11px;
-  margin-bottom: 11px;
-  padding-left: 10px;
-  padding-right: 10px;
-  background-color: alpha(@secondary-container, 0.95);
-  border-radius: 5px;
-  border: 0.3px solid @outline;
-}
-
-#custom-player-next {
-    margin-left: 0px;
-    margin-right: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 12px;
-    color: @playerctl-1;
-}
-#custom-player-play {
-    margin-left: 0px;
-    margin-right: 0px;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 13px;
-    color: @playerctl-2;
-}
-
-#custom-player-prev {
-    margin-left: 2px;
-    margin-right: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 12px;
-    color: @playerctl-1;
-}
-
-/* User Container style */
-
-box#user-container {
-    margin-left: 5px;
-    margin-right: 0px;
-    margin-top: 9px;
-    margin-bottom: 9px;
-    padding-left: 10px;
-    padding-right: 10px;
-    background-color: alpha(@secondary-container, 0.75);
-    border-radius: 5px;
-    border: 0.3px solid @outline;
-  }
-
-#load {
-    padding-left: 0px;
-    padding-right: 10px;
-    font-family: Nunito;
-    color: @load;
-}
-
-#custom-theme-switcher {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 3px;
-    background-color : alpha(@on-primary, 0.5);
-}
-
-
-#network.up {
-    padding-left: 5px;
-    padding-right: 10px;
-    font-family: JetBrainsMono Nerd Font;
-    font-size: 12px;
-    color: @upload;
-}
-
-#network.down {
-    padding-left: 5px;
-    padding-right: 10px;
-    font-family: JetBrainsMono Nerd Font;
-    font-size: 12px;
-    color: @download;
-}
-
-
-/* Cava */
-
-#custom-cava {
-    padding-left: 10px;
-    padding-right: 10px;
-    color: @cava;
-}
-
-
-/* Style for General modules */
-
-
-#custom-cpuinfo,
-#custom-weather,
-#custom-weather.Icons,
-#memory,
-#network {
-    background-color: @transparent;
-    padding: 0 0px;
-    color: @primary;
-}
-
-#custom-weather.Icons{
-    padding-right: 6px;
-    padding-left: 0px;
-}
+/* Window */
 #window {
-    margin: 0 0px;
-    border-radius: 0px;
-    background-color: @background;
+	color: @accent-primary-alt;
+	font-weight: bold;
 }
 
-
-#network {
-    color: @network;
-    font-family: jura;
-    font-size: 15px;
-    font-weight: 500;
-    text-shadow: 0 0 1px rgba(255, 255, 255, 0.99);
+#peripherials {
+	background-color: @background-alt;
+	border: 2px solid @accent-tertiary;
+	border-radius: 3px;
+	padding: 0 4px;
+	margin: 5px 0;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+#custom-notification {
 }
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-/* Style for separators */
-
-label#custom-dot-alt {
-    color: @primary;
-}
-
-label#custom-dot {
-    color: @surface-variant;
-}
-
-label#custom-dot-fade {
-    color: @surface-variant;
-}
-
-label#custom-left-arrw {
-    color: @primary;
-    margin-left: 4px;
-    margin-right: 4px;
-    font-size: 20px;
-}
-
-
-/* Style for system-container */
-
-box#system-container {
-    margin-top: 9px;
-    margin-bottom: 9px;
-    padding-left: 11px;
-    padding-right: 7px;
-    background-color: alpha(@secondary-container, 0.80);
-    border-radius: 5px;
-    border: 0.3px solid @outline;
-}
-
-#tray {
-    margin-left: 2px;
-    margin-right: 7px;
-    border-radius: 2px;
-}
-
-#bluetooth{
-    margin-left: 2px;
-    margin-right: 7px;
-    color: @on-primary-container;
-    font-size: 15px;
-    font-weight: 800;
-}
-
-#wireplumber{
-    margin-left: 3px;
-    margin-right: 3px;
-    color: @on-primary-container;
-    font-size: 15px;
-    font-weight: 800;
-}
-
-#disk {
-    margin-left: 2px;
-    margin-right: 7px;
-    color: @on-primary-container;
-    font-size: 15px;
-    font-weight: 800;
-}
-
-#cpu {
-    margin-left: 7px;
-    margin-right: 7px;
-    color: @on-primary-container;
-    font-size: 17px;
-    font-weight: 800;
-}
-
-#bluetooth.text{
-    font-size: 10px;
-    font-weight: 800;
-    margin-left: 3px;
-    margin-right: 3px;
-    color: @on-secondary-container;
-}
-
-#wireplumber.text{
-    font-size: 10px;
-    font-weight: 800;
-    margin-left: 3px;
-    margin-right: 3px;
-    color: @on-secondary-container;
-}
-
-#cpu.text{
-    font-size: 10px;
-    font-weight: 800;
-    margin-left: 3px;
-    margin-right: 7px;
-    color: @on-secondary-container;
-}
-
-#disk.text{
-    font-size: 10px;
-    font-weight: 800;
-    margin-left: 5px;
-    margin-right: 10px;
-    color: @on-secondary-container;
-}
-
-/* Clock container */
-
-box#clock-container {
-  margin-left: 5px;
-  margin-right: 10px;
-  margin-top: 9px;
-  margin-bottom: 9px;
-  padding-left: 7px;
-  padding-right: 7px;
-  background-color: alpha(@primary-container, 0.65);
-  color: @clock;
-  border-radius: 5px;
-  border: 0.3px solid @outline;
-}
-
-
-label#clock {
-    font-size: 12px;
-    padding-right: 5px;
-    padding-left: 5px;
-}
-
-
-/* Style for launchers */
-
-#custom-launcher {
-    margin: 10px;
-    padding-left: 5px;
-    padding-right: 7px;
-    color: @surface-tint;
-}
-
-box#launcher {
-    margin-left: 10px;
-    margin-top: 9px;
-    margin-bottom: 9px;
-    border-radius: 5px;
-    background-color: alpha(@primary-container, 0.65);
-    border: 0.3px solid @outline;
-}
-
-box#launcher .horizontal {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-left: 2px;
-    margin-right: 10px;
-    border-radius: 5px;
-    background: @primary-container;
-}
-

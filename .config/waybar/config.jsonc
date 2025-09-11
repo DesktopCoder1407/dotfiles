@@ -85,32 +85,28 @@
 	},
 
 	"custom/cpuinfo": {
-		"exec": " ~/.config/waybar/scripts/cpuinfo.sh",
+		"exec": "~/.config/waybar/scripts/cpuinfo.sh",
 		"return-type": "json",
-		"format": "{}  ",
-		"interval": 5,
-		"max-length": 9
+		"format": "{} ",
+		"interval": 5
 	},
 
 	"custom/gpuinfo": {
-		"exec": " ~/.config/waybar/scripts/gpuinfo.sh",
+		"exec": "~/.config/waybar/scripts/gpuinfo.sh",
 		"return-type": "json",
-		"format": "{} 󰢮 ",
-		"interval": 5,
-		"max-length": 9
+		"format": "{} 󰢮",
+		"interval": 5
 	},
 
 	"memory": {
-		"format": "{used:0.1f}GB  ",
+		"format": "{used:0.1f}GB ",
 		"interval": 60,
-		"max-length": 8,
 		"tooltip-format": "MEM: {used:0.1f}GB/{total:0.1f}GB\nSWP: {swapUsed}GB/{swapTotal}GB"
 	},
 
 	"disk": {
 		"format": "{percentage_used}% 󰋊",
-		"interval": 60,
-		"max-length": 6
+		"interval": 60
 	},
 
 	"group/peripherials": {
@@ -140,9 +136,9 @@
 	},
 
 	"network": {
-		"format-wifi": "󰖩 ",
-		"format-ethernet": "󰌗 ",
-		"format-disconnected": " ",
+		"format-wifi": "󰖩",
+		"format-ethernet": "󰌗",
+		"format-disconnected": "",
 		"interval": 60,
 		"tooltip-format-wifi": "Connected to {essid} - {signalStrength}%",
 		"tooltip-format-ethernet": "Connected to LAN\n  {ipaddr}\nConnects via\n  {gwaddr}",
@@ -158,7 +154,7 @@
 	},
 
 	"network#rate": {
-		"format": "{bandwidthUpBits:>3} {bandwidthDownBits:>3}",
+		"format": " {bandwidthUpBits}  {bandwidthDownBits}",
 		"tooltip": false,
 		"interval": 1
 	},
@@ -255,8 +251,8 @@
 	},
 
 	"clock": {
-		"format": "   {:%H:%M | %m-%d-%y}",
-		"format-alt": "   {:%a, %d %b, %Y}",
+		"format": " {:%H:%M | %m-%d-%y}",
+		"format-alt": " {:%a, %d %b, %Y}",
 		"tooltip-format": "<tt>{calendar}</tt>",
 		"calendar": {
 			"mode": "month",
@@ -296,12 +292,12 @@
 	},
 
 	"custom/dot": {
-		"format": " • ",
+		"format": "•",
 		"tooltip": false
 	},
 
 	"custom/dot-alt": {
-		"format": " • ",
+		"format": "•",
 		"tooltip": false
 	},
 
