@@ -25,7 +25,7 @@ window#waybar {
 }
 
 tooltip {
-	background-color: alpha(@background-alt, 0.5);
+	background-color: alpha(@background-alt, 0.9);
 	border: 2px solid @accent-secondary;
 	color: @foreground-alt;
 	font-weight: bold;
@@ -40,7 +40,6 @@ tooltip {
 }
 
 /* Custom Accents */
-
 #custom-dot {
 	color: @accent-primary;
 	padding: 0 4px;
@@ -98,6 +97,7 @@ button:hover {
 	font-weight: bold;
 }
 
+/* Peripherial Box */
 #peripherials {
 	background-color: @background-alt;
 	border: 2px solid @accent-tertiary;
@@ -106,5 +106,27 @@ button:hover {
 	margin: 5px 0;
 }
 
+#network.icon,
+#bluetooth,
+#battery.icon,
+#wireplumber.icon {
+	color: @accent-primary;
+	padding: 0 3px;
+	font-size: 16px; 
+}
+
+.network_child,
+.battery_child,
+.audio_child {
+	color: @accent-secondary;
+}
+
+/* Notifications */
 #custom-notification {
+	background-color: @background-alt;
+	color: @accent-primary;
+	border: 2px solid @accent-tertiary;
+	border-radius: 3px;
+	padding: 0 8px;
+	margin: 5px 0;
 }

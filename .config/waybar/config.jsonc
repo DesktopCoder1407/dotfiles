@@ -112,22 +112,22 @@
 	"group/peripherials": {
 		"orientation": "horizontal",
 		"modules": [
-			"group/network",
+			"group/network_group",
 			"bluetooth",
-			"group/battery",
-			"group/audio"
+			"group/battery_group",
+			"group/audio_group"
 		]
 	},
 
-	"group/network": {
+	"group/network_group": {
 		"orientation": "horizontal",
 		"drawer": {
 			"transition-duration": 750,
-			"children-class": "network-child",
+			"children-class": "network_child",
 			"click-to-reveal": true
 		},
 		"modules": [
-			"network",
+			"network#icon",
 			"network#name",
 			"custom/dot",
 			"network#rate",
@@ -135,7 +135,7 @@
 		]
 	},
 
-	"network": {
+	"network#icon": {
 		"format-wifi": "󰖩",
 		"format-ethernet": "󰌗",
 		"format-disconnected": "",
@@ -175,20 +175,20 @@
 		"tooltip-format-enumerate-connected-battery": "{device_alias}: 󰥉 {device_battery_percentage}%"
 	},
 
-	"group/battery": {
+	"group/battery_group": {
 		"orientation": "horizontal",
 		"drawer": {
 			"transition-duration": 750,
-			"children-class": "battery-child",
+			"children-class": "battery_child",
 			"click-to-reveal": false
 		},
 		"modules": [
-			"battery",
+			"battery#icon",
 			"battery#text"
 		]
 	},
 
-	"battery": {
+	"battery#icon": {
 		"format": "{icon}",
 		"format-charging": "{icon}󱐋",
 		"format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
@@ -204,23 +204,23 @@
 		"design-capacity": true
 	},
 
-	"group/audio": {
+	"group/audio_group": {
 		"orientation": "horizontal",
 		"drawer": {
 			"transition-duration": 750,
-			"children-class": "audio-child",
+			"children-class": "audio_child",
 			"click-to-reveal": true
 		},
 		"modules": [
-			"wireplumber",
+			"wireplumber#icon",
 			"wireplumber#text",
 			"custom/dot",
-			"wireplumber#mic",
+			"wireplumber#mic_icon",
 			"wireplumber#mic_text"
 		]
 	},
 
-	"wireplumber": {
+	"wireplumber#icon": {
 		"format": "{icon}",
 		"format-muted": "󰝟",
 		"format-icons": [ "󰸈", "󰕿", "󰖀", "󰕾" ],
@@ -235,7 +235,7 @@
 		"tooltip-format": "{node_name}\n  Volume: {volume}%"
 	},
 
-	"wireplumber#mic": {
+	"wireplumber#mic_icon": {
 		"node-type": "Audio/Source",
 		"format": "󰍬",
 		"format-muted": "󰍭",
@@ -276,13 +276,13 @@
 	"custom/notification": {
 		"format": "{icon}",
 		"format-icons": {
-			"notification": "<span foreground='red'><sup></sup></span>",
+			"notification": "<span foreground='red' font-size='smaller'><sup></sup></span>",
 			"none": "",
-			"dnd-notification": "<span foreground='red'><sup></sup></span>",
+			"dnd-notification": "<span foreground='red' font-size='smaller'><sup></sup></span>",
 			"dnd-none": "",
-			"inhibited-notification": "<span foreground='red'><sup></sup></span>",
+			"inhibited-notification": "<span foreground='red' font-size='smaller'><sup></sup></span>",
 			"inhibited-none": "",
-			"dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+			"dnd-inhibited-notification": "<span foreground='red' font-size='smaller'><sup></sup></span>",
 			"dnd-inhibited-none": ""
 		},
 		"return-type": "json",
