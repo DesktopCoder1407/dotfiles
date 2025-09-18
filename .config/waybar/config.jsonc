@@ -192,6 +192,10 @@
 		"format": "{icon}",
 		"format-charging": "{icon}󱐋",
 		"format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
+		"states": {
+			"warning": 20,
+			"critical": 10
+		},
 		"interval": 5,
 		"tooltip-format": "{timeTo} - {capacity}%\nBattery Health: {health}%",
 		"design-capacity": true

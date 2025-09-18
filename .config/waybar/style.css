@@ -12,7 +12,12 @@
 @define-color accent-primary-alt #8FBCBB;
 @define-color accent-secondary #81A1C1;
 @define-color accent-tertiary #5E81AC;
-@define-color accent-urgent #BF616A;
+
+@define-color color-red #BF616A;
+@define-color color-orange #D08770;
+@define-color color-yellow #EBCB8B;
+@define-color color-green #A3BE8C;
+@define-color color-purple #B48EAD;
 
 /* Full-bar CSS */
 window#waybar {
@@ -83,7 +88,7 @@ button:hover {
 }
 
 #workspaces button.urgent {
-	background-color: @accent-urgent;
+	background-color: @color-red;
 }
 
 #workspaces button:hover {
@@ -120,6 +125,14 @@ button:hover {
 .battery_child,
 .audio_child {
 	color: @accent-secondary;
+}
+
+#battery.icon.warning {
+	color: @color-yellow;
+}
+
+#battery.icon.critical {
+	color: @color-red;
 }
 
 /* Notifications */
