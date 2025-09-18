@@ -70,6 +70,7 @@ button:hover {
 	border-radius: 3px;
 	margin: 5px 2px;
 	padding: 0 9px;
+	font-weight: bold;
 }
 
 #workspaces button.visible {
