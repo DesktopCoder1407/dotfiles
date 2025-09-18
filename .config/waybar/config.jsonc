@@ -161,7 +161,7 @@
 
 	"bluetooth": {
 		"format": "",
-		"format-icons": ["󰤾", "󰥀", "󰥂", "󰥄", "󰥈"],
+		"format-icons": ["󰂎󰂱", "󱊡󰂱", "󱊢󰂱", "󱊣󰂱"],
 		"format-disabled": "󰂲",
 		"format-off": "󰂲",
 		"format-on": "󰂯",
