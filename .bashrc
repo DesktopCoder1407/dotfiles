@@ -15,12 +15,14 @@ export PS1="${BYELLOW}\u:\w${PS_CLEAR}$ "
 
 # Aliases
 alias ls='ls --color=auto'
-alias ll='ls -lhA --color=auto'
+alias ll='ls -lhA'
 alias grep='grep --color=auto'
-alias gs='git status'
+alias gs='git status -sb'
 
+# Shell Options
 shopt -s checkwinsize  # Let bash know when the terminal has been resized.
 
+# User Functions
 download_music() {
 	yt-dlp -x --audio-format mp3 --audio-quality 320k $1
 }
