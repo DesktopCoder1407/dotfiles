@@ -32,7 +32,7 @@
 		"hide-active": false,
 		"all-outputs": true,
 		"window-rewrite": {
-			"class<firefox>": "",
+			"class<librewolf>": "",
 			"class<Alacritty>": "",
 			"class<steam>": "",
 			"class<steam_app.*>": "",
@@ -65,8 +65,6 @@
 			"click-to-reveal": true
 		},
 		"modules": [
-			"custom/weather",
-			"custom/dot",
 			"custom/cpuinfo",
 			"custom/dot",
 			"custom/gpuinfo",
@@ -130,7 +128,7 @@
 			"network#icon",
 			"network#name",
 			"custom/dot",
-			"network#rate",
+			"custom/vpn",
 			"custom/dot-alt"
 		]
 	},
@@ -153,10 +151,12 @@
 		"tooltip-format-disconnected": "Disconnected - No Internet"
 	},
 
-	"network#rate": {
-		"format": " {bandwidthUpBits}  {bandwidthDownBits}",
-		"tooltip": false,
-		"interval": 1
+	"custom/vpn": {
+		"exec": "~/.config/waybar/scripts/vpninfo.sh",
+		"on-click": "~/.config/waybar/scripts/vpninfo.sh --toggle",
+		"format": "{}",
+		"return-type": "json",
+		"interval": 5
 	},
 
 	"bluetooth": {
