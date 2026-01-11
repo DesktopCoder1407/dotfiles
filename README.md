@@ -1,6 +1,8 @@
 # Required Packages:
 `vim`
 `hyprland`
+`xdg-desktop-portal-wlr`
+`xdg-desktop-portal-hyprland`
 `swaync`
 `waybar`
 `jq`
