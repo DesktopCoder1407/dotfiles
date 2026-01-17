@@ -111,7 +111,7 @@
 		"orientation": "horizontal",
 		"modules": [
 			"group/network_group",
-			"bluetooth",
+			//"bluetooth",
 			"group/battery_group",
 			"group/audio_group"
 		]
