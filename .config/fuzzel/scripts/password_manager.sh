@@ -15,5 +15,5 @@ elif [ "$exit_code" -eq 10 ]; then
 else  # Copy Pasword
 	pass=$(rbw get "$item")
 	echo $pass | wl-copy
-	cliphist delete-query $pass
+	cliphist list | head -n 1 | cliphist delete
 fi
