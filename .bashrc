@@ -24,7 +24,7 @@ shopt -s checkwinsize  # Let bash know when the terminal has been resized.
 
 # User Functions
 download_music() {
-	yt-dlp -x --audio-format mp3 --audio-quality 320k $1
+	yt-dlp -x --audio-format mp3 --audio-quality 0 $1
 }
 
 print_colors() {
